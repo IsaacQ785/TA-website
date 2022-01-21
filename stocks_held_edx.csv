@@ -1,0 +1,1001 @@
+Stock-ticker,Company Name,Sector,Mkt Cap,Added
+A,Agilent Technologies,Life Sciences Tools & Services,43.69B,No
+AA,Alcoa,Metals & Mining,11.49B,No
+AAL,American Airlines Group,Airlines,11.97B,No
+AAP,Advance Auto Parts,Specialty Retail,14.94B,No
+AAPL,Apple,"Technology Hardware, Storage & Periph...","2,826.99B",Yes
+ABB,ABB Ltd,Electrical Equipment,74.44B,No
+ABBV,AbbVie,Biotechnology,240.20B,No
+ABC,AmerisourceBergen,Health Care Providers & Services,28.35B,No
+ABEV,Ambev,Beverages,43.28B,No
+ABMD,Abiomed,Health Care Equipment & Supplies,13.70B,No
+ABNB,Airbnb,"Hotels, Restaurants & Leisure",104.20B,No
+ABT,Abbott Laboratories,Health Care Equipment & Supplies,226.62B,No
+ACGL,Arch Capital Group,Insurance,18.31B,No
+ACH,Aluminum Corporation of China,Metals & Mining,14.49B,No
+ACI,Albertsons Companies,Grocery Stores,14.95B,No
+ACM,AECOM,Construction & Engineering,10.50B,No
+ACN,Accenture,IT Services,223.50B,No
+ADBE,Adobe,Software,247.70B,No
+ADI,Analog Devices,Semiconductors & Semiconductor Equipment,90.36B,No
+ADM,Archer-Daniels-Midland Company,Food Products,40.03B,No
+ADP,Automatic Data Processing,IT Services,96.39B,No
+ADSK,Autodesk,Software,57.00B,No
+AEE,Ameren,Multi-Utilities,22.69B,No
+AEG,Aegon,Insurance,11.75B,No
+AEM,Agnico Eagle Mines,Metals & Mining,12.63B,No
+AEP,American Electric Power Company,Electric Utilities,45.16B,No
+AER,AerCap Holdings,Trading Companies & Distributors,16.74B,No
+AES,The AES Corporation,Independent Power and Renewable Elect...,15.37B,No
+AFG,American Financial Group,Insurance,11.50B,No
+AFL,Aflac,Insurance,42.38B,No
+AFRM,Affirm Holdings,IT Services,19.44B,No
+AGCO,AGCO Corporation,Machinery,9.43B,No
+AGR,Avangrid,Electric Utilities,18.60B,No
+AIG,American International Group,Insurance,51.40B,No
+AIRC,Apartment Income REIT,Equity Real Estate Investment Trusts...,8.56B,No
+AIZ,Assurant,Insurance,8.83B,No
+AJG,Arthur J. Gallagher & Company,Insurance,32.69B,No
+AKAM,Akamai Technologies,IT Services,18.30B,No
+ALB,Albemarle,Chemicals,27.33B,No
+ALC,Alcon,Medical Instruments & Supplies,38.52B,No
+ALGN,Align Technology,Health Care Equipment & Supplies,41.37B,No
+ALL,The Allstate Corporation,Insurance,35.57B,No
+ALLE,Allegion,Building Products,11.16B,No
+ALLY,Ally Financial,Consumer Finance,18.24B,No
+ALNY,Alnylam Pharmaceuticals,Biotechnology,17.76B,No
+ALV,Autoliv,Auto Components,9.45B,No
+AMAT,Applied Materials,Semiconductors & Semiconductor Equipment,148.38B,No
+AMC,AMC Entertainment Holdings,Entertainment,10.56B,No
+AMCR,Amcor,Containers & Packaging,18.97B,No
+AMD,Advanced Micro Devices,Semiconductors & Semiconductor Equipment,165.30B,No
+AME,AMETEK,Electrical Equipment,32.74B,No
+AMGN,Amgen,Biotechnology,132.57B,No
+AMH,American Homes 4 Rent,Equity Real Estate Investment Trusts...,13.96B,No
+AMOV,America Movil,Wireless Telecommunication Services,65.72B,No
+AMP,Ameriprise Financial,Capital Markets,36.76B,No
+AMT,American Tower,Equity Real Estate Investment Trusts...,114.14B,No
+AMX,America Movil,Wireless Telecommunication Services,66.01B,No
+AMZN,Amazon.com,Internet & Direct Marketing Retail,"1,644.56B",No
+ANET,Arista Networks,Communications Equipment,39.87B,No
+ANSS,ANSYS,Software,30.41B,No
+ANTM,Anthem,Health Care Providers & Services,109.74B,No
+AON,Aon plc,Insurance,60.25B,No
+AOS,A. O. Smith,Building Products,12.82B,No
+APA,APA Corporation,"Oil, Gas & Consumable Fuels",12.09B,No
+APD,Air Products & Chemicals,Chemicals,64.59B,No
+APH,Amphenol,"Electronic Equipment, Instruments & C...",48.81B,No
+APO,Apollo Global Management,Capital Markets,41.30B,No
+APP,AppLovin,Software-Application,29.57B,No
+APTV,Aptiv,Auto Components,41.28B,No
+AQN,Algonquin Power & Utilities,Multi-Utilities,9.32B,No
+ARCC,Ares Capital,Capital Markets,10.02B,No
+ARE,Alexandria Real Estate Equities,Equity Real Estate Investment Trusts...,33.62B,No
+ARES,Ares Management,Capital Markets,13.20B,No
+ARGX,Argenx SE,Biotechnology,15.02B,No
+ARMK,Aramark,"Hotels, Restaurants & Leisure",9.38B,No
+ARW,Arrow Electronics,"Electronic Equipment, Instruments & C...",9.40B,No
+ASAN,Asana,Software,11.22B,No
+ASML,ASML Holding,Semiconductors & Semiconductor Equipment,302.63B,No
+ASX,ASE Technology Holding Company,Semiconductors & Semiconductor Equipment,16.94B,No
+ATO,Atmos Energy,Gas Utilities,14.07B,No
+ATVI,Activision Blizzard,Entertainment,50.93B,No
+AU,AngloGold Ashanti,Metals & Mining,8.36B,No
+AVB,AvalonBay Communities,Equity Real Estate Investment Trusts...,34.75B,No
+AVGO,Broadcom,Semiconductors & Semiconductor Equipment,246.23B,No
+AVLR,Avalara,Software,9.51B,No
+AVTR,Avantor,Life Sciences Tools & Services,22.98B,No
+AVY,Avery Dennison,Containers & Packaging,17.31B,No
+AWK,American Water Works Company,Water Utilities,29.69B,No
+AXON,Axon Enterprise,Aerospace & Defense,9.39B,No
+AXP,American Express Company,Consumer Finance,130.44B,No
+AZN,AstraZeneca,Pharmaceuticals,182.36B,No
+AZO,AutoZone,Specialty Retail,41.96B,No
+AZPN,Aspen Technology,Software,10.43B,No
+BA,The Boeing Company,Aerospace & Defense,132.80B,No
+BABA,Alibaba Group Holding,Internet & Direct Marketing Retail,360.06B,No
+BAC,Bank of America,Banks,392.10B,No
+BAH,Booz Allen Hamilton Holding,IT Services,11.91B,No
+BAM,Brookfield Asset Management,Capital Markets,89.84B,No
+BAP,Credicorp,Banks,11.53B,No
+BAX,Baxter International,Health Care Equipment & Supplies,42.93B,No
+BBD,Banco Bradesco,Banks,36.53B,No
+BBL,BHP Group,Metals & Mining,167.09B,No
+BBVA,Banco Bilbao Vizcaya Argentaria,Banks,43.31B,No
+BBWI,Bath & Body Works,Specialty Retail,14.39B,No
+BBY,Best Buy Co.,Specialty Retail,24.07B,No
+BCE,"BCE, Inc.",Diversified Telecommunication Services,48.28B,No
+BCH,Banco de Chile,Banks,9.32B,No
+BCS,Barclays,Banks,50.63B,No
+BDX,"Becton, Dickinson and Company",Health Care Equipment & Supplies,74.86B,No
+BEKE,KE Holdings,Real Estate Management & Development,25.01B,No
+BEN,Franklin Resources,Capital Markets,17.72B,No
+BEP,Brookfield Renewable Partners,Independent Power and Renewable Elect...,9.03B,No
+BERY,Berry Global Group,Containers & Packaging,9.80B,No
+BF.A,Brown-Forman,Beverages,31.64B,No
+BF.B,Brown-Forman,Beverages,31.64B,No
+BG,Bunge,Food Products,13.87B,No
+BGNE,BeiGene,Biotechnology,24.70B,No
+BHC,Bausch Health Companies,Pharmaceuticals,9.75B,No
+BHP,BHP Group,Metals & Mining,172.06B,No
+BIDU,Baidu,Interactive Media & Services,53.79B,No
+BIIB,Biogen,Biotechnology,35.15B,No
+BILI,Bilibili,Entertainment,14.81B,No
+BILL,Bill.com Holdings,Software,18.57B,No
+BIO,Bio-Rad Laboratories,Life Sciences Tools & Services,18.78B,No
+BIP,Brookfield Infrastructure Partners LP,Multi-Utilities,18.26B,No
+BJ,BJ's Wholesale Club Holdings,Food & Staples Retailing,8.27B,No
+BK,Bank of New York Mellon,Capital Markets,52.52B,No
+BKI,Black Knight,IT Services,11.62B,No
+BKNG,Booking Holdings,Internet & Direct Marketing Retail,100.64B,No
+BKR,Baker Hughes Company,Energy Equipment & Services,23.89B,No
+BLDR,Builders FirstSource,Building Products,15.07B,No
+BLK,BlackRock,Capital Markets,128.92B,No
+BLL,Ball Corporation,Containers & Packaging,29.34B,No
+BMO,Bank of Montreal,Banks,76.78B,No
+BMRN,BioMarin Pharmaceutical,Biotechnology,16.56B,No
+BMY,Bristol-Myers Squibb Company,Pharmaceuticals,144.12B,No
+BNS,The Bank of Nova Scotia,Banks,89.69B,No
+BNTX,BioNTech SE,Biotechnology,47.53B,No
+BP,BP plc,"Oil, Gas & Consumable Fuels",105.32B,No
+BR,Broadridge Financial Solutions,IT Services,18.66B,No
+BRK.A,Berkshire Hathaway,Diversified Financial Services,723.40B,No
+BRK.B,Berkshire Hathaway,Diversified Financial Services,723.40B,No
+BRKR,Bruker,Life Sciences Tools & Services,10.73B,No
+BRO,Brown & Brown,Insurance,18.94B,No
+BSAC,Banco Santander-Chile,Banks,8.94B,No
+BSBR,Banco Santander Brasil,Banks,43.31B,No
+BSMX,Banco Santander Mexico,Banks,8.78B,No
+BSX,Boston Scientific,Health Care Equipment & Supplies,63.93B,No
+BSY,Bentley Systems,Software-Application,11.09B,No
+BTI,British American Tobacco,Tobacco,97.41B,No
+BUD,Anheuser-Busch InBev,Beverages,117.78B,No
+BURL,Burlington Stores,Specialty Retail,15.36B,No
+BWA,BorgWarner,Auto Components,11.93B,No
+BX,Blackstone,Capital Markets,82.55B,No
+BXP,Boston Properties,Equity Real Estate Investment Trusts...,19.54B,No
+BZ,Kanzhun,Staffing & Employment Services,11.96B,No
+C,Citigroup,Banks,132.81B,No
+CABO,Cable One,Media,9.43B,No
+CACC,Credit Acceptance,Consumer Finance,8.39B,No
+CAE,CAE Inc.,Aerospace & Defense,8.39B,No
+CAG,Conagra Brands,Food Products,16.84B,No
+CAH,Cardinal Health,Health Care Providers & Services,14.96B,No
+CAJ,Canon,"Technology Hardware, Storage & Periph...",25.53B,No
+CAR,Avis Budget Group,Road & Rail,11.02B,No
+CARR,Carrier Global,Building Products,44.28B,No
+CAT,Caterpillar,Machinery,123.84B,No
+CB,Chubb,Insurance,84.54B,No
+CBOE,Cboe Global Markets,Capital Markets,12.60B,No
+CBRE,CBRE Group,Real Estate Management & Development,34.75B,No
+CBSH,Commerce Bancshares,Banks,9.09B,No
+CCEP,Coca-Cola Europacific Partners,Beverages,27.22B,No
+CCI,Crown Castle International,Equity Real Estate Investment Trusts...,79.59B,No
+CCJ,Cameco,"Oil, Gas & Consumable Fuels",9.01B,No
+CCK,Crown Holdings,Containers & Packaging,14.47B,No
+CCL,Carnival,"Hotels, Restaurants & Leisure",26.75B,No
+CDAY,Ceridian HCM Holding,Software,12.53B,No
+CDNS,Cadence Design Systems,Software,44.83B,No
+CDW,CDW Corporation,"Electronic Equipment, Instruments & C...",26.01B,No
+CE,Celanese,Chemicals,18.89B,No
+CEA,China Eastern Airlines,Airlines,13.39B,No
+CERN,Cerner,Health Care Technology,26.94B,No
+CF,CF Industries Holdings,Chemicals,14.25B,No
+CFG,Citizens Financial Group,Banks,24.02B,No
+CFLT,Confluent,Software-Infrastructure,17.19B,No
+CFR,Cullen/Frost Bankers,Banks,9.12B,No
+CG,The Carlyle Group,Capital Markets,18.25B,No
+CGNX,Cognex,"Electronic Equipment, Instruments & C...",12.49B,No
+CHD,Church & Dwight Company,Household Products,26.06B,No
+CHH,Choice Hotels International,"Hotels, Restaurants & Leisure",8.47B,No
+CHK,Chesapeake Energy,"Oil, Gas & Consumable Fuels",8.38B,No
+CHKP,Check Point Software Technologies,Software,16.75B,No
+CHRW,C.H. Robinson Worldwide,Air Freight & Logistics,14.08B,No
+CHT,Chunghwa Telecom Co.,Diversified Telecommunication Services,33.11B,No
+CHTR,Charter Communications,Media,108.95B,No
+CHWY,Chewy,Internet & Direct Marketing Retail,18.75B,No
+CI,Cigna,Health Care Providers & Services,80.26B,No
+CIEN,Ciena,Communications Equipment,11.06B,No
+CINF,Cincinnati Financial,Insurance,19.26B,No
+CL,Colgate-Palmolive Company,Household Products,70.34B,No
+CLF,Cleveland-Cliffs,Metals & Mining,11.03B,No
+CLR,Continental Resources,"Oil, Gas & Consumable Fuels",19.11B,No
+CLVT,Clarivate,Professional Services,12.36B,No
+CLX,The Clorox Company,Household Products,22.93B,No
+CM,Canadian Imperial Bank of Commerce,Banks,59.52B,No
+CMA,Comerica,Banks,13.28B,No
+CMCSA,Comcast,Media,236.12B,No
+CME,CME Group,Capital Markets,80.21B,No
+CMG,Chipotle Mexican Grill,"Hotels, Restaurants & Leisure",42.15B,No
+CMI,Cummins,Machinery,33.98B,No
+CMS,CMS Energy,Multi-Utilities,18.47B,No
+CNA,CNA Financial,Insurance,12.76B,No
+CNC,Centene,Health Care Providers & Services,47.00B,No
+CNHI,CNH Industrial,Machinery,22.37B,No
+CNI,Canadian National Railway Company,Road & Rail,87.50B,No
+CNP,CenterPoint Energy,Multi-Utilities,17.36B,No
+CNQ,Canadian Natural Resources,"Oil, Gas & Consumable Fuels",61.32B,No
+CNXC,Concentrix,IT Services,8.72B,No
+COF,Capital One Financial,Consumer Finance,68.34B,No
+COIN,Coinbase Global,Software-Application,60.24B,No
+CONE,CyrusOne,Equity Real Estate Investment Trusts...,11.57B,No
+COO,The Cooper Companies,Health Care Equipment & Supplies,20.28B,No
+COP,ConocoPhillips,"Oil, Gas & Consumable Fuels",114.41B,No
+COST,Costco Wholesale,Food & Staples Retailing,223.04B,No
+COUP,Coupa Software,Software,10.34B,No
+CP,Canadian Pacific Railway,Road & Rail,72.33B,No
+CPB,Campbell Soup Company,Food Products,13.99B,No
+CPNG,Coupang,Internet Retail,37.15B,No
+CPRI,Capri Holdings,"Textiles, Apparel & Luxury Goods",8.74B,No
+CPRT,Copart,Commercial Services & Supplies,32.43B,No
+CPT,Camden Property Trust,Equity Real Estate Investment Trusts...,16.92B,No
+CQP,Cheniere Energy Partners LP,"Oil, Gas & Consumable Fuels",22.63B,No
+CRH,CRH Plc,Construction Materials,40.97B,No
+CRL,Charles River Laboratories International,Life Sciences Tools & Services,17.92B,No
+CRM,Salesforce.com,Software,227.76B,No
+CRWD,CrowdStrike Holdings,Software,40.52B,No
+CS,Credit Suisse Group AG,Capital Markets,25.24B,No
+CSCO,Cisco Systems,Communications Equipment,258.79B,No
+CSGP,CoStar Group,Professional Services,29.43B,No
+CSL,Carlisle Companies,Industrial Conglomerates,12.39B,No
+CSX,CSX Corporation,Road & Rail,80.82B,No
+CTAS,Cintas,Commercial Services & Supplies,41.23B,No
+CTLT,Catalent,Pharmaceuticals,18.53B,No
+CTRA,Coterra Energy,Oil & Gas E&P,18.06B,No
+CTSH,Cognizant Technology Solutions,IT Services,46.33B,No
+CTVA,Corteva,Chemicals,35.42B,No
+CTXS,Citrix Systems,Software,11.95B,No
+CUBE,CubeSmart,Equity Real Estate Investment Trusts...,11.18B,No
+CUK,Carnival,"Hotels, Restaurants & Leisure",24.49B,No
+CVE,Cenovus Energy,"Oil, Gas & Consumable Fuels",30.07B,No
+CVNA,Carvana Co.,Specialty Retail,27.77B,No
+CVS,CVS Health,Health Care Providers & Services,140.22B,No
+CVX,Chevron,"Oil, Gas & Consumable Fuels",248.59B,No
+CX,CEMEX,Construction Materials,10.05B,No
+CZR,Caesars Entertainment,"Hotels, Restaurants & Leisure",17.71B,No
+D,Dominion Energy,Multi-Utilities,64.12B,No
+DAL,Delta Air Lines,Airlines,25.80B,No
+DAR,Darling Ingredients,Food Products,10.63B,No
+DASH,DoorDash,Internet & Direct Marketing Retail,45.12B,No
+DB,Deutsche Bank AG,Capital Markets,28.89B,No
+DBX,Dropbox,Software,9.20B,No
+DD,DuPont de Nemours,Chemicals,44.02B,No
+DDOG,Datadog,Software,43.15B,No
+DE,Deere & Company,Machinery,116.98B,No
+DECK,Deckers Outdoor,"Textiles, Apparel & Luxury Goods",8.89B,No
+DELL,Dell Technologies,"Technology Hardware, Storage & Periph...",46.24B,No
+DEO,Diageo,Beverages,119.85B,No
+DFS,Discover Financial Services,Consumer Finance,37.38B,No
+DG,Dollar General,Multiline Retail,50.30B,No
+DGX,Quest Diagnostics,Health Care Providers & Services,17.46B,No
+DHI,D.R. Horton,Household Durables,35.09B,No
+DHR,Danaher,Health Care Equipment & Supplies,209.59B,No
+DIDI,DiDi Global,Software-Application,22.52B,No
+DIS,The Walt Disney Company,Entertainment,276.18B,No
+DISCA,Discovery,Media,15.57B,No
+DISCB,Discovery,Media,15.57B,No
+DISCK,Discovery,Media,15.57B,No
+DISH,DISH Network,Media,19.14B,No
+DKNG,DraftKings,"Hotels, Restaurants & Leisure",9.43B,No
+DKS,Dick's Sporting Goods,Specialty Retail,9.67B,No
+DLB,Dolby Laboratories,"Electronic Equipment, Instruments & C...",9.29B,No
+DLO,DLocal,Software-Infrastructure,8.63B,No
+DLR,Digital Realty Trust,Equity Real Estate Investment Trusts...,44.24B,No
+DLTR,Dollar Tree,Multiline Retail,29.43B,No
+DNA,Ginkgo Bioworks Holdings,Biotechnology,8.61B,No
+DNB,Dun & Bradstreet Holdings,Professional Services,8.49B,No
+DOCS,Doximity,Health Information Services,8.63B,No
+DOCU,DocuSign,Software,25.81B,No
+DOV,Dover,Machinery,25.70B,No
+DOW,Dow Inc.,Chemicals,44.92B,No
+DOX,Amdocs,IT Services,9.43B,No
+DPZ,Domino's Pizza,"Hotels, Restaurants & Leisure",17.20B,No
+DRE,Duke Realty,Equity Real Estate Investment Trusts...,22.78B,No
+DRI,Darden Restaurants,"Hotels, Restaurants & Leisure",18.26B,No
+DT,Dynatrace,Software,14.97B,No
+DTE,DTE Energy Company,Multi-Utilities,23.13B,No
+DUK,Duke Energy,Electric Utilities,80.04B,No
+DVA,DaVita,Health Care Providers & Services,11.85B,No
+DVN,Devon Energy,"Oil, Gas & Consumable Fuels",34.11B,No
+DXC,DXC Technology Company,IT Services,8.57B,No
+DXCM,DexCom,Health Care Equipment & Supplies,43.36B,No
+E,Eni SpA,"Oil, Gas & Consumable Fuels",53.77B,No
+EA,Electronic Arts,Entertainment,36.89B,No
+EBAY,eBay Inc.,Internet & Direct Marketing Retail,39.72B,No
+EBR,Centrais Eletricas Brasileiras,Electric Utilities,9.02B,No
+EC,Ecopetrol,"Oil, Gas & Consumable Fuels",29.07B,No
+ECL,Ecolab,Chemicals,61.91B,No
+ED,Consolidated Edison,Multi-Utilities,29.55B,No
+EDR,Endeavor Group Holdings,Entertainment,8.49B,No
+EFX,Equifax,Professional Services,30.44B,No
+EGP,EastGroup Properties,Equity Real Estate Investment Trusts...,8.44B,No
+EIX,Edison International,Electric Utilities,24.22B,No
+EL,The Estee Lauder Companies,Personal Products,115.92B,No
+ELAN,Elanco Animal Health,Pharmaceuticals,12.79B,No
+ELP,Companhia Paranaense de Energia,Electric Utilities,15.24B,No
+ELS,Equity LifeStyle Properties,Equity Real Estate Investment Trusts...,14.81B,No
+EMN,Eastman Chemical Company,Chemicals,17.15B,No
+EMR,Emerson Electric Company,Electrical Equipment,58.06B,No
+ENB,Enbridge,"Oil, Gas & Consumable Fuels",84.71B,No
+ENIA,Enel Americas,Electric Utilities,12.70B,No
+ENPH,Enphase Energy,Semiconductors & Semiconductor Equipment,19.27B,No
+ENTG,Entegris,Semiconductors & Semiconductor Equipment,18.10B,No
+EOG,EOG Resources,"Oil, Gas & Consumable Fuels",61.80B,No
+EPAM,EPAM Systems,IT Services,30.80B,No
+EPD,Enterprise Products Partners,"Oil, Gas & Consumable Fuels",52.35B,No
+EQH,Equitable Holdings,Diversified Financial Services,14.56B,No
+EQIX,Equinix,Equity Real Estate Investment Trusts...,67.24B,No
+EQNR,Equinor ASA,"Oil, Gas & Consumable Fuels",94.87B,No
+EQR,Equity Residential,Equity Real Estate Investment Trusts...,34.06B,No
+EQT,EQT Corporation,"Oil, Gas & Consumable Fuels",8.99B,No
+ERIC,Ericsson,Communications Equipment,38.18B,No
+ERIE,Erie Indemnity Company,Insurance,9.57B,No
+ES,Eversource Energy,Electric Utilities,30.04B,No
+ESS,Essex Property Trust,Equity Real Estate Investment Trusts...,22.39B,No
+ESTC,Elastic,Software,8.76B,No
+ET,Energy Transfer LP,"Oil, Gas & Consumable Fuels",30.51B,No
+ETN,Eaton,Electrical Equipment,68.13B,No
+ETR,Entergy,Electric Utilities,22.32B,No
+ETSY,"Etsy, Inc.",Internet & Direct Marketing Retail,20.75B,No
+EVRG,Evergy,Electric Utilities,15.10B,No
+EW,Edwards Lifesciences,Health Care Equipment & Supplies,73.83B,No
+EWBC,East West Bancorp,Banks,12.84B,No
+EXAS,Exact Sciences,Biotechnology,13.62B,No
+EXC,Exelon,Electric Utilities,55.02B,No
+EXPD,Expeditors International of Washington,Air Freight & Logistics,20.61B,No
+EXPE,Expedia Group,Internet & Direct Marketing Retail,27.94B,No
+EXR,Extra Space Storage,Equity Real Estate Investment Trusts...,27.26B,No
+F,Ford Motor Company,Automobiles,100.67B,No
+FAF,First American Financial,Insurance,8.73B,No
+FANG,Diamondback Energy,"Oil, Gas & Consumable Fuels",23.41B,No
+FAST,Fastenal Company,Trading Companies & Distributors,34.05B,No
+FB,Meta Platforms,Interactive Media & Services,923.27B,No
+FBHS,Fortune Brands Home & Security,Building Products,13.77B,No
+FCNCA,First Citizens BancShares,Banks,14.33B,No
+FCX,Freeport-McMoRan,Metals & Mining,64.73B,No
+FDS,FactSet Research Systems,Capital Markets,16.14B,No
+FDX,FedEx,Air Freight & Logistics,67.89B,No
+FE,FirstEnergy,Electric Utilities,23.70B,No
+FERG,Ferguson,Industrial Distribution,37.95B,No
+FFIV,F5 Networks,Communications Equipment,14.46B,No
+FHN,First Horizon,Banks,10.07B,No
+FICO,Fair Isaac,Software,11.94B,No
+FIS,Fidelity National Information Services,IT Services,71.88B,No
+FISV,Fiserv,IT Services,72.04B,No
+FITB,Fifth Third Bancorp,Banks,34.43B,No
+FIVE,Five Below,Specialty Retail,9.71B,No
+FIVN,Five9,Software,8.73B,No
+FLEX,Flex Ltd.,"Electronic Equipment, Instruments & C...",8.60B,No
+FLT,FleetCor Technologies,IT Services,19.81B,No
+FMC,FMC Corporation,Chemicals,14.46B,No
+FMS,Fresenius Medical Care AG & Co.,Health Care Providers & Services,19.81B,No
+FMX,Fomento Economico Mexicano,Beverages,29.64B,No
+FND,Floor & Decor Holdings,Specialty Retail,11.15B,No
+FNF,Fidelity National Financial,Insurance,15.90B,No
+FNV,Franco-Nevada,Metals & Mining,24.95B,No
+FOX,Fox Corporation,Media,22.54B,No
+FOXA,Fox Corporation,Media,22.54B,No
+FRC,First Republic Bank,Banks,34.43B,No
+FRT,Federal Realty Investment Trust,Equity Real Estate Investment Trusts...,10.34B,No
+FSLR,First Solar,Semiconductors & Semiconductor Equipment,8.83B,No
+FTCH,Farfetch,Internet & Direct Marketing Retail,10.09B,No
+FTNT,Fortinet,Software,51.10B,No
+FTS,Fortis,Electric Utilities,22.26B,No
+FTV,Fortive,Machinery,26.00B,No
+FWONA,Liberty Media Formula One Group,Entertainment,14.41B,No
+G,Genpact,IT Services,9.68B,No
+GD,General Dynamics,Aerospace & Defense,59.50B,No
+GDDY,GoDaddy,IT Services,12.76B,No
+GDRX,GoodRx Holdings,Health Care Technology,10.71B,No
+GE,General Electric Company,Industrial Conglomerates,113.28B,No
+GFI,Gold Fields,Metals & Mining,9.44B,No
+GFL,GFL Environmental,Waste Management,11.38B,No
+GFS,GlobalFoundries,Semiconductors,31.70B,No
+GGB,Gerdau,Metals & Mining,8.72B,No
+GGG,Graco,Machinery,12.80B,No
+GIB,"CGI, Inc.",IT Services,20.95B,No
+GILD,Gilead Sciences,Biotechnology,90.03B,No
+GIS,General Mills,Food Products,42.16B,No
+GL,Globe Life,Insurance,10.70B,No
+GLOB,Globant,Software,10.41B,No
+GLPI,Gaming & Leisure Properties,Equity Real Estate Investment Trusts...,11.04B,No
+GLW,Corning,"Electronic Equipment, Instruments & C...",31.65B,No
+GM,General Motors Company,Automobiles,88.71B,No
+GMAB,Genmab,Biotechnology,23.35B,No
+GME,GameStop,Specialty Retail,8.91B,No
+GNRC,Generac Holdings,Electrical Equipment,19.32B,No
+GNTX,Gentex,Auto Components,8.43B,No
+GOLD,Barrick Gold,Metals & Mining,33.34B,No
+GOOG,Alphabet,Interactive Media & Services,"1,853.59B",No
+GOOGL,Alphabet,Interactive Media & Services,"1,853.59B",No
+GPC,Genuine Parts Company,Distributors,19.67B,No
+GPN,Global Payments,IT Services,43.68B,No
+GRAB,Grab Holdings,Asset Management,22.60B,No
+GRFS,Grifols,Biotechnology,11.54B,No
+GRMN,Garmin,Household Durables,25.46B,No
+GRUB,Just Eat Takeaway.com,Internet & Direct Marketing Retail,11.65B,No
+GS,The Goldman Sachs Group,Capital Markets,127.07B,No
+GSK,GlaxoSmithKline,Pharmaceuticals,114.40B,No
+GTLB,GitLab,Software-Application,9.28B,No
+GWRE,Guidewire Software,Software,8.64B,No
+GWW,W.W. Grainger,Trading Companies & Distributors,25.99B,No
+GXO,GXO Logistics,Specialty Business Services,10.47B,No
+H,Hyatt Hotels,"Hotels, Restaurants & Leisure",10.14B,No
+HAL,Halliburton Company,Energy Equipment & Services,25.73B,No
+HAS,Hasbro,Leisure Products,13.81B,No
+HBAN,Huntington Bancshares,Banks,25.50B,No
+HCA,HCA Healthcare,Health Care Providers & Services,79.93B,No
+HCP,HashiCorp,Software-Infrastructure,11.93B,No
+HD,The Home Depot,Specialty Retail,388.46B,No
+HDB,HDFC Bank,Banks,132.53B,No
+HEI,HEICO,Aerospace & Defense,18.83B,No
+HEI.A,HEICO,Aerospace & Defense,18.83B,No
+HES,Hess Corporation,"Oil, Gas & Consumable Fuels",28.43B,No
+HIG,The Hartford Financial Services Group,Insurance,24.66B,No
+HLT,Hilton Worldwide Holdings,"Hotels, Restaurants & Leisure",41.25B,No
+HMC,Honda Motor Company,Automobiles,52.99B,No
+HNP,Huaneng Power International,Independent Power and Renewable Elect...,8.57B,No
+HOLX,Hologic,Health Care Equipment & Supplies,17.50B,No
+HON,Honeywell International,Industrial Conglomerates,149.84B,No
+HOOD,Robinhood Markets,Software-Infrastructure,12.68B,No
+HPE,Hewlett-Packard Enterprise Company,"Technology Hardware, Storage & Periph...",22.71B,No
+HPQ,HP Inc.,"Technology Hardware, Storage & Periph...",41.60B,No
+HRL,Hormel Foods,Food Products,26.63B,No
+HSBC,HSBC Holdings,Banks,143.82B,No
+HSIC,Henry Schein,Health Care Providers & Services,10.79B,No
+HST,Host Hotels & Resorts,Equity Real Estate Investment Trusts...,12.81B,No
+HSY,The Hershey Company,Food Products,41.10B,No
+HTHT,Huazhu Group,"Hotels, Restaurants & Leisure",11.16B,No
+HTZ,Hertz Global Holdings,Rental & Leasing Services,11.12B,No
+HUBB,Hubbell,Electrical Equipment,10.88B,No
+HUBS,HubSpot,Software,21.84B,No
+HUM,Humana,Health Care Providers & Services,50.34B,No
+HUN,Huntsman,Chemicals,8.34B,No
+HWM,Howmet Aerospace,Aerospace & Defense,14.98B,No
+HZNP,Horizon Therapeutics,Pharmaceuticals,20.66B,No
+IAC,IAC/InterActiveCorp,Interactive Media & Services,11.77B,No
+IBKR,Interactive Brokers Group,Capital Markets,31.16B,No
+IBM,International Business Machines,IT Services,120.30B,No
+IBN,ICICI Bank,Banks,76.97B,No
+ICE,Intercontinental Exchange,Capital Markets,71.33B,No
+ICL,ICL Group,Chemicals,14.21B,No
+ICLR,ICON plc,Life Sciences Tools & Services,21.23B,No
+IDXX,IDEXX Laboratories,Health Care Equipment & Supplies,44.89B,No
+IEP,Icahn Enterprises,Industrial Conglomerates,15.23B,No
+IEX,IDEX Corporation,Machinery,16.75B,No
+IFF,International Flavors & Fragrances,Chemicals,37.11B,No
+IHG,InterContinental Hotels Group,"Hotels, Restaurants & Leisure",12.47B,No
+ILMN,Illumina,Life Sciences Tools & Services,63.32B,No
+IMO,Imperial Oil,"Oil, Gas & Consumable Fuels",28.35B,No
+INCY,Incyte,Biotechnology,16.54B,No
+INFO,IHS Markit,Professional Services,48.57B,No
+INFY,Infosys,IT Services,109.79B,No
+ING,ING Group,Banks,58.60B,No
+INTC,Intel,Semiconductors & Semiconductor Equipment,226.53B,No
+INTU,Intuit,Software,155.97B,No
+INVH,Invitation Homes,Equity Real Estate Investment Trusts...,25.89B,No
+IOT,Samsara,Software-Infrastructure,11.46B,No
+IP,International Paper Company,Containers & Packaging,19.17B,No
+IPG,The Interpublic Group of Companies,Media,14.99B,No
+IPGP,IPG Photonics,"Electronic Equipment, Instruments & C...",8.60B,No
+IQV,IQVIA Holdings,Life Sciences Tools & Services,47.25B,No
+IR,Ingersoll Rand,Machinery,24.19B,No
+IRM,Iron Mountain,Equity Real Estate Investment Trusts...,12.96B,No
+ISRG,Intuitive Surgical,Health Care Equipment & Supplies,109.94B,No
+IT,Gartner,IT Services,23.52B,No
+ITT,ITT Inc.,Machinery,8.52B,No
+ITUB,Itau Unibanco Holding,Banks,41.56B,No
+ITW,Illinois Tool Works,Machinery,76.54B,No
+IVZ,Invesco,Capital Markets,11.48B,No
+IX,ORIX Corporation,Diversified Financial Services,26.99B,No
+J,Jacobs Engineering Group,Construction & Engineering,17.21B,No
+JAZZ,Jazz Pharmaceuticals,Pharmaceuticals,8.87B,No
+JBHT,J.B. Hunt Transport Services,Road & Rail,21.22B,No
+JBL,Jabil,"Electronic Equipment, Instruments & C...",10.15B,No
+JCI,Johnson Controls International,Building Products,53.92B,No
+JD,JD.com,Internet & Direct Marketing Retail,114.90B,No
+JEF,Jefferies Financial Group,Diversified Financial Services,9.16B,No
+JHX,James Hardie Industries,Construction Materials,16.41B,No
+JKHY,Jack Henry & Associates,IT Services,12.51B,No
+JLL,Jones Lang LaSalle,Real Estate Management & Development,12.85B,No
+JNJ,Johnson & Johnson,Pharmaceuticals,441.86B,No
+JNPR,Juniper Networks,Communications Equipment,11.26B,No
+JPM,JPMorgan Chase & Co.,Banks,466.61B,No
+K,Kellogg Company,Food Products,23.04B,No
+KB,KB Financial Group,Banks,20.55B,No
+KDP,Keurig Dr Pepper,Beverages,55.70B,No
+KEP,Korea Electric Power,Electric Utilities,11.57B,No
+KEY,KeyCorp,Banks,25.15B,No
+KEYS,Keysight Technologies,"Electronic Equipment, Instruments & C...",34.25B,No
+KHC,The Kraft Heinz Company,Food Products,46.54B,No
+KIM,Kimco Realty,Equity Real Estate Investment Trusts...,15.42B,No
+KKR,KKR & Co.,Capital Markets,40.60B,No
+KL,Kirkland Lake Gold,Metals & Mining,10.69B,No
+KLAC,KLA Corporation,Semiconductors & Semiconductor Equipment,67.47B,No
+KMB,Kimberly-Clark,Household Products,48.22B,No
+KMI,Kinder Morgan,"Oil, Gas & Consumable Fuels",40.56B,No
+KMX,CarMax,Specialty Retail,18.33B,No
+KNX,Knight-Swift Transportation Holdings,Road & Rail,9.42B,No
+KO,The Coca-Cola Company,Beverages,265.17B,No
+KOF,Coca-Cola Femsa,Beverages,11.71B,No
+KR,The Kroger Company,Food & Staples Retailing,36.12B,No
+L,Loews,Insurance,15.63B,No
+LAD,Lithia Motors,Specialty Retail,9.36B,No
+LAMR,Lamar Advertising Company,Equity Real Estate Investment Trusts...,11.41B,No
+LBRDA,Liberty Broadband,Media,26.55B,No
+LBRDK,Liberty Broadband,Media,26.55B,No
+LBTYA,Liberty Global,Media,15.49B,No
+LBTYB,Liberty Global,Diversified Telecommunication Services,15.46B,No
+LBTYK,Liberty Global,Media,15.49B,No
+LCID,Lucid Group,Auto Manufacturers,69.51B,No
+LDOS,Leidos Holdings,IT Services,13.20B,No
+LEA,Lear Corporation,Auto Components,11.39B,No
+LEN,Lennar,Household Durables,32.78B,No
+LEN.B,Lennar,Construction & Engineering,32.78B,No
+LEVI,Levi Strauss & Co.,"Textiles, Apparel & Luxury Goods",9.29B,No
+LFC,China Life Insurance Company,Insurance,103.43B,No
+LH,Laboratory Corporation of America Holdings,Health Care Providers & Services,26.42B,No
+LHX,L3Harris Technologies,Aerospace & Defense,44.71B,No
+LI,Li Auto,Automobiles,32.54B,No
+LII,Lennox International,Building Products,10.67B,No
+LIN,Linde,Chemicals,168.44B,No
+LKQ,LKQ Corporation,Distributors,16.52B,No
+LLY,Eli Lilly and Company,Pharmaceuticals,233.52B,No
+LMT,Lockheed Martin,Aerospace & Defense,102.76B,No
+LNC,Lincoln National,Insurance,13.43B,No
+LNG,Cheniere Energy,"Oil, Gas & Consumable Fuels",28.66B,No
+LNT,Alliant Energy,Electric Utilities,15.04B,No
+LOGI,Logitech International,"Technology Hardware, Storage & Periph...",14.22B,No
+LOW,Lowe's Companies,Specialty Retail,163.99B,No
+LPLA,LPL Financial Holdings,Capital Markets,14.09B,No
+LRCX,Lam Research,Semiconductors & Semiconductor Equipment,102.76B,No
+LSCC,Lattice Semiconductor,Semiconductors & Semiconductor Equipment,8.78B,No
+LSI,Life Storage,Equity Real Estate Investment Trusts...,11.38B,No
+LU,Lufax Holding,Consumer Finance,12.29B,No
+LULU,Lululemon Athletica,"Textiles, Apparel & Luxury Goods",42.54B,No
+LUMN,Lumen Technologies,Diversified Telecommunication Services,12.63B,No
+LUV,Southwest Airlines Company,Airlines,27.12B,No
+LVS,Las Vegas Sands,"Hotels, Restaurants & Leisure",32.84B,No
+LW,Lamb Weston Holdings,Food Products,10.01B,No
+LYB,LyondellBasell Industries NV,Chemicals,34.21B,No
+LYFT,"Lyft, Inc.",Road & Rail,14.06B,No
+LYG,Lloyds Banking Group,Banks,53.54B,No
+LYV,Live Nation Entertainment,Entertainment,25.79B,No
+MA,Mastercard,IT Services,365.65B,No
+MAA,Mid-America Apartment Communities,Equity Real Estate Investment Trusts...,24.77B,No
+MANH,Manhattan Associates,Software,8.62B,No
+MAR,Marriott International,"Hotels, Restaurants & Leisure",53.02B,No
+MAS,Masco,Building Products,16.42B,No
+MASI,Masimo,Health Care Equipment & Supplies,12.87B,No
+MCD,McDonald's,"Hotels, Restaurants & Leisure",192.57B,No
+MCHP,Microchip Technology,Semiconductors & Semiconductor Equipment,46.77B,No
+MCK,McKesson,Health Care Providers & Services,39.17B,No
+MCO,Moody's,Capital Markets,65.72B,No
+MDB,MongoDB,IT Services,26.49B,No
+MDLZ,Mondelez International,Food Products,95.00B,No
+MDT,Medtronic plc.,Health Care Equipment & Supplies,145.95B,No
+MELI,MercadoLibre,Internet & Direct Marketing Retail,56.65B,No
+MET,MetLife,Insurance,57.51B,No
+MFC,Manulife Financial,Insurance,40.34B,No
+MFG,Mizuho Financial Group,Banks,35.99B,No
+MGA,Magna International,Auto Components,26.78B,No
+MGM,MGM Resorts International,"Hotels, Restaurants & Leisure",20.85B,No
+MHK,Mohawk Industries,Household Durables,11.57B,No
+MIDD,The Middleby Corporation,Machinery,10.97B,No
+MKC,McCormick & Company,Food Products,25.76B,No
+MKL,Markel,Insurance,17.45B,No
+MKSI,MKS Instruments,Semiconductors & Semiconductor Equipment,10.02B,No
+MKTX,MarketAxess Holdings,Capital Markets,14.13B,No
+MLM,Martin Marietta Materials,Construction Materials,25.12B,No
+MMC,Marsh & McLennan Companies,Insurance,81.39B,No
+MMM,3M Company,Industrial Conglomerates,103.00B,No
+MMP,"Magellan Midstream Partners,","Oil, Gas & Consumable Fuels",10.59B,No
+MNDY,monday.com,Software-Application,9.43B,No
+MNST,Monster Beverage,Beverages,47.57B,No
+MO,Altria Group,Tobacco,93.34B,No
+MOH,Molina Healthcare,Health Care Providers & Services,16.71B,No
+MORN,Morningstar,Capital Markets,12.76B,No
+MOS,The Mosaic Company,Chemicals,16.01B,No
+MP,MP Materials,Metals & Mining,8.33B,No
+MPC,Marathon Petroleum,"Oil, Gas & Consumable Fuels",46.01B,No
+MPLX,MPLX LP,"Oil, Gas & Consumable Fuels",32.14B,No
+MPW,Medical Properties Trust,Equity Real Estate Investment Trusts...,14.39B,No
+MPWR,Monolithic Power Systems,Semiconductors & Semiconductor Equipment,20.20B,No
+MRK,Merck & Co.,Pharmaceuticals,205.56B,No
+MRNA,Moderna,Biotechnology,83.01B,No
+MRO,Marathon Oil,"Oil, Gas & Consumable Fuels",15.16B,No
+MRVL,Marvell Technology,Semiconductors & Semiconductor Equipment,70.04B,No
+MS,Morgan Stanley,Capital Markets,177.43B,No
+MSCI,MSCI Inc.,Capital Markets,43.43B,No
+MSFT,Microsoft,Software,"2,328.98B",No
+MSI,Motorola Solutions,Communications Equipment,42.42B,No
+MT,ArcelorMittal,Metals & Mining,33.92B,No
+MTB,M&T Bank,Banks,23.85B,No
+MTCH,Match Group,Interactive Media & Services,34.30B,No
+MTD,Mettler-Toledo International,Life Sciences Tools & Services,34.77B,No
+MTN,Vail Resorts,"Hotels, Restaurants & Leisure",12.30B,No
+MU,Micron Technology,Semiconductors & Semiconductor Equipment,109.02B,No
+MUFG,Mitsubishi UFJ Financial Group,Banks,79.98B,No
+NCLH,Norwegian Cruise Line Holdings,"Hotels, Restaurants & Leisure",9.57B,No
+NDAQ,Nasdaq,Capital Markets,31.13B,No
+NDSN,Nordson,Machinery,13.87B,No
+NEE,NextEra Energy,Electric Utilities,163.25B,No
+NEM,Newmont,Metals & Mining,48.82B,No
+NET,Cloudflare,Software,32.27B,No
+NFLX,Netflix,Entertainment,232.86B,No
+NGG,National Grid,Multi-Utilities,53.62B,No
+NI,NiSource,Multi-Utilities,11.13B,No
+NICE,NICE Ltd.,Software,17.46B,No
+NIO,NIO Inc.,Automobiles,49.23B,No
+NKE,"Nike, Inc.","Textiles, Apparel & Luxury Goods",234.32B,No
+NLOK,NortonLifeLock,Software,15.64B,No
+NLY,Annaly Capital Management,Mortgage Real Estate Investment Trus...,11.51B,No
+NMR,Nomura Holdings,Capital Markets,14.15B,No
+NOC,Northrop Grumman,Aerospace & Defense,63.48B,No
+NOK,Nokia,Communications Equipment,33.41B,No
+NOW,ServiceNow,Software,105.67B,No
+NRG,NRG Energy,Independent Power and Renewable Elect...,10.01B,No
+NSC,Norfolk Southern,Road & Rail,70.15B,No
+NTAP,NetApp,"Technology Hardware, Storage & Periph...",21.21B,No
+NTES,NetEase,Entertainment,69.35B,No
+NTR,Nutrien,Chemicals,41.21B,No
+NTRS,Northern Trust,Capital Markets,27.75B,No
+NU,Nu Holdings,Banks-Diversified,37.42B,No
+NUAN,Nuance Communications,Software,17.68B,No
+NUE,Nucor,Metals & Mining,31.67B,No
+NVAX,Novavax,Biotechnology,8.38B,No
+NVDA,NVIDIA,Semiconductors & Semiconductor Equipment,671.39B,No
+NVEI,Nuvei,Software-Infrastructure,9.54B,No
+NVO,Novo Nordisk,Pharmaceuticals,219.45B,No
+NVR,"NVR, Inc.",Household Durables,19.91B,No
+NVS,Novartis AG,Pharmaceuticals,202.57B,No
+NWG,NatWest Group,Banks,38.75B,No
+NWL,Newell Brands,Household Durables,10.15B,No
+NWS,News Corporation,Media,12.29B,No
+NWSA,News Corporation,Media,12.29B,No
+NXPI,NXP Semiconductors NV,Semiconductors & Semiconductor Equipment,59.91B,No
+O,Realty Income,Equity Real Estate Investment Trusts...,40.45B,No
+OC,Owens Corning,Building Products,9.50B,No
+ODFL,Old Dominion Freight Line,Road & Rail,36.36B,No
+OGN,Organon & Co.,Drug Manufacturers-General,8.33B,No
+OKE,ONEOK,"Oil, Gas & Consumable Fuels",27.92B,No
+OKTA,"Okta, Inc.",IT Services,31.79B,No
+OLN,Olin Corporation,Chemicals,8.84B,No
+OLPX,Olaplex Holdings,Specialty Retail,14.80B,No
+OMC,Omnicom Group,Media,16.92B,No
+ON,ON Semiconductor,Semiconductors & Semiconductor Equipment,28.52B,No
+ONON,On Holding AG,Apparel Retail,8.68B,No
+ORAN,Orange,Diversified Telecommunication Services,30.35B,No
+ORCL,Oracle,Software,234.17B,No
+ORLY,O'Reilly Automotive,Specialty Retail,45.74B,No
+OSK,Oshkosh,Machinery,8.29B,No
+OTEX,Open Text,Software,12.93B,No
+OTIS,Otis Worldwide,Machinery,35.76B,No
+OVV,Ovintiv,"Oil, Gas & Consumable Fuels",10.83B,No
+OXY,Occidental Petroleum,"Oil, Gas & Consumable Fuels",33.17B,No
+PANW,Palo Alto Networks,Software,49.25B,No
+PATH,UiPath,Software-Infrastructure,19.29B,No
+PAYC,Paycom Software,Software,20.05B,No
+PAYX,Paychex,IT Services,45.09B,No
+PBA,Pembina Pipeline,"Oil, Gas & Consumable Fuels",17.79B,No
+PBCT,People's United Financial,Banks,9.17B,No
+PBR,Petroleo Brasileiro,"Oil, Gas & Consumable Fuels",82.24B,No
+PBR.A,Petroleo Brasileiro,"Oil, Gas & Consumable Fuels",70.84B,No
+PCAR,PACCAR,Machinery,33.50B,No
+PCG,PG&E Corporation,Electric Utilities,29.27B,No
+PCOR,Procore Technologies,Software-Application,9.03B,No
+PCTY,Paylocity Holding,Software,10.81B,No
+PDD,Pinduoduo,Internet & Direct Marketing Retail,75.71B,No
+PEAK,Healthpeak Properties,Equity Real Estate Investment Trusts...,19.45B,No
+PEG,Public Service Enterprise Group,Multi-Utilities,32.99B,No
+PEN,Penumbra,Health Care Equipment & Supplies,8.88B,No
+PEP,PepsiCo,Beverages,242.85B,No
+PFE,Pfizer,Pharmaceuticals,308.43B,No
+PFG,Principal Financial Group,Insurance,20.36B,No
+PG,The Procter & Gamble Company,Household Products,386.73B,No
+PGR,The Progressive Corporation,Insurance,64.14B,No
+PH,Parker-Hannifin,Machinery,42.02B,No
+PHG,Koninklijke Philips,Health Care Equipment & Supplies,30.29B,No
+PHM,PulteGroup,Household Durables,14.45B,No
+PINS,Pinterest,Interactive Media & Services,21.41B,No
+PKG,Packaging Corporation of America,Containers & Packaging,13.04B,No
+PKI,PerkinElmer,Life Sciences Tools & Services,22.52B,No
+PKX,POSCO,Metals & Mining,19.05B,No
+PLD,Prologis,Equity Real Estate Investment Trusts...,112.92B,No
+PLTR,Palantir Technologies,Software,32.10B,No
+PLUG,Plug Power,Electrical Equipment,13.51B,No
+PM,Philip Morris International,Tobacco,160.95B,No
+PNC,The PNC Financial Services Group,Banks,93.91B,No
+PNFP,Pinnacle Financial Partners,Banks,8.41B,No
+PNR,Pentair,Machinery,10.94B,No
+PODD,Insulet,Health Care Equipment & Supplies,16.74B,No
+POOL,Pool Corporation,Distributors,19.81B,No
+PPG,PPG Industries,Chemicals,39.17B,No
+PPL,PPL Corporation,Electric Utilities,22.50B,No
+PRU,Prudential Financial,Insurance,44.38B,No
+PSA,Public Storage,Equity Real Estate Investment Trusts...,63.44B,No
+PSX,Phillips 66,"Oil, Gas & Consumable Fuels",38.82B,No
+PSXP,Phillips 66 Partners LP,"Oil, Gas & Consumable Fuels",10.13B,No
+PTC,PTC Inc.,Software,13.66B,No
+PTON,Peloton Interactive,Leisure Products,10.35B,No
+PTR,PetroChina Company,"Oil, Gas & Consumable Fuels",144.96B,No
+PUK,Prudential,Insurance,49.85B,No
+PWR,Quanta Services,Construction & Engineering,15.20B,No
+PXD,Pioneer Natural Resources Company,"Oil, Gas & Consumable Fuels",52.66B,No
+PYPL,PayPal Holdings,IT Services,209.63B,No
+QCOM,Qualcomm,Semiconductors & Semiconductor Equipment,211.33B,No
+QGEN,Qiagen,Life Sciences Tools & Services,11.02B,No
+QRVO,Qorvo,Semiconductors & Semiconductor Equipment,16.39B,No
+QS,QuantumScape,Auto Components,8.74B,No
+QSR,Restaurant Brands International,"Hotels, Restaurants & Leisure",18.08B,No
+RACE,Ferrari,Automobiles,45.11B,No
+RBLX,Roblox,Electronic Gaming & Multimedia,45.76B,No
+RCI,Rogers Communications,Wireless Telecommunication Services,25.14B,No
+RCL,Royal Caribbean Cruises,"Hotels, Restaurants & Leisure",21.44B,No
+RDS.A,Royal Dutch Shell,"Oil, Gas & Consumable Fuels",192.06B,No
+RDS.B,Royal Dutch Shell,"Oil, Gas & Consumable Fuels",192.18B,No
+RDY,Dr. Reddy's Laboratories,Pharmaceuticals,10.51B,No
+RE,Everest Re Group,Insurance,11.43B,No
+REG,Regency Centers,Equity Real Estate Investment Trusts...,12.98B,No
+REGN,Regeneron Pharmaceuticals,Biotechnology,66.16B,No
+RELX,Relx PLC,Professional Services,58.43B,No
+REXR,Rexford Industrial Realty,Equity Real Estate Investment Trusts...,11.22B,No
+RF,Regions Financial,Banks,24.22B,No
+RGEN,Repligen,Life Sciences Tools & Services,10.69B,No
+RH,RH,Specialty Retail,9.61B,No
+RHI,Robert Half International,Professional Services,12.73B,No
+RIO,Rio Tinto,Metals & Mining,122.10B,No
+RIVN,Rivian Automotive,Auto Manufacturers,70.63B,No
+RJF,Raymond James Financial,Capital Markets,22.53B,No
+RKT,Rocket Companies,Thrifts & Mortgage Finance,26.67B,No
+RL,Ralph Lauren,"Textiles, Apparel & Luxury Goods",8.45B,No
+RMD,ResMed,Health Care Equipment & Supplies,36.75B,No
+RNG,RingCentral,Software,16.50B,No
+ROK,Rockwell Automation,Electrical Equipment,37.71B,No
+ROKU,"Roku, Inc.",Entertainment,22.50B,No
+ROL,Rollins,Commercial Services & Supplies,16.05B,No
+ROP,Roper Technologies,Industrial Conglomerates,47.24B,No
+ROST,Ross Stores,Specialty Retail,36.14B,No
+RPM,RPM International,Chemicals,11.90B,No
+RPRX,Royalty Pharma,Pharmaceuticals,17.03B,No
+RRX,Regal Rexnord,Specialty Industrial Machinery,11.61B,No
+RS,Reliance Steel & Aluminum Co.,Metals & Mining,10.42B,No
+RSG,Republic Services,Commercial Services & Supplies,41.18B,No
+RTX,Raytheon Technologies,Aerospace & Defense,138.20B,No
+RY,Royal Bank of Canada,Banks,167.75B,No
+RYAAY,Ryanair Holdings,Airlines,26.71B,No
+S,SentinelOne,Software-Infrastructure,11.39B,No
+SAN,Banco Santander,Banks,62.90B,No
+SAP,SAP SE,Software,163.84B,No
+SBAC,SBA Communications,Equity Real Estate Investment Trusts...,35.49B,No
+SBNY,Signature Bank,Banks,22.15B,No
+SBSW,Sibanye Stillwater,Metals & Mining,10.26B,No
+SBUX,Starbucks,"Hotels, Restaurants & Leisure",117.46B,No
+SC,Santander Consumer USA Holdings,Consumer Finance,12.75B,No
+SCCO,Southern Copper,Metals & Mining,52.41B,No
+SCHW,The Charles Schwab Corporation,Capital Markets,180.61B,No
+SCI,Service Corporation International,Diversified Consumer Services,10.72B,No
+SE,Sea Limited,Entertainment,97.62B,No
+SEDG,SolarEdge Technologies,Semiconductors & Semiconductor Equipment,13.33B,No
+SEE,Sealed Air,Containers & Packaging,10.03B,No
+SEIC,SEI Investments Company,Capital Markets,8.74B,No
+SGEN,Seagen,Biotechnology,25.07B,No
+SHG,Shinhan Financial Group Co.,Banks,17.24B,No
+SHOP,Shopify,IT Services,138.77B,No
+SHW,The Sherwin-Williams Company,Chemicals,80.88B,No
+SIRI,Sirius XM Holdings,Media,24.72B,No
+SITE,SiteOne Landscape Supply,Trading Companies & Distributors,9.14B,No
+SIVB,SVB Financial Group,Banks,41.34B,No
+SJM,The J. M. Smucker Company,Food Products,15.73B,No
+SJR,Shaw Communications,Media,15.12B,No
+SKM,SK Telecom Co.,Wireless Telecommunication Services,10.44B,No
+SLB,Schlumberger,Energy Equipment & Services,53.03B,No
+SLF,Sun Life Financial,Insurance,33.81B,No
+SMFG,Sumitomo Mitsui Financial Group,Banks,51.82B,No
+SMG,The Scotts Miracle-Gro Company,Chemicals,9.00B,No
+SNA,Snap-on,Machinery,11.78B,No
+SNAP,"Snap, Inc.",Interactive Media & Services,61.24B,No
+SNN,Smith & Nephew,Health Care Equipment & Supplies,15.34B,No
+SNOW,Snowflake,IT Services,88.70B,No
+SNP,China Petroleum & Chemical,"Oil, Gas & Consumable Fuels",76.86B,No
+SNPS,Synopsys,Software,50.05B,No
+SNX,Synnex,"Electronic Equipment, Instruments & C...",10.21B,No
+SNY,Sanofi,Pharmaceuticals,130.37B,No
+SO,The Southern Company,Electric Utilities,72.77B,No
+SOFI,SoFi Technologies,Credit Services,10.56B,No
+SONY,Sony Group,Household Durables,154.68B,No
+SPG,Simon Property Group,Equity Real Estate Investment Trusts...,51.17B,No
+SPGI,S&P Global,Capital Markets,104.20B,No
+SPLK,Splunk,Software,19.47B,No
+SPOT,Spotify Technology,Entertainment,41.87B,No
+SQ,Block,IT Services,61.48B,No
+SQM,Sociedad Quimica y Minera de Chile,Chemicals,16.15B,No
+SRE,Sempra Energy,Multi-Utilities,44.06B,No
+SSL,Sasol,Chemicals,11.98B,No
+SSNC,SS&C Technologies Holdings,Software,21.23B,No
+ST,Sensata Technologies Holding,Electrical Equipment,10.07B,No
+STE,Steris,Health Care Equipment & Supplies,23.46B,No
+STLA,Stellantis,Automobiles,68.16B,No
+STLD,Steel Dynamics,Metals & Mining,12.35B,No
+STM,STMicroelectronics,Semiconductors & Semiconductor Equipment,44.96B,No
+STOR,STORE Capital,Equity Real Estate Investment Trusts...,9.12B,No
+STT,State Street,Capital Markets,37.94B,No
+STX,Seagate Technology Holdings,"Technology Hardware, Storage & Periph...",24.31B,No
+STZ,Constellation Brands,Beverages,46.66B,No
+SU,Suncor Energy,"Oil, Gas & Consumable Fuels",41.29B,No
+SUI,Sun Communities,Equity Real Estate Investment Trusts...,22.94B,No
+SUZ,Suzano,Paper & Forest Products,15.37B,No
+SWK,Stanley Black & Decker,Machinery,31.41B,No
+SWKS,Skyworks Solutions,Semiconductors & Semiconductor Equipment,25.74B,No
+SYF,Synchrony Financial,Consumer Finance,26.64B,No
+SYK,Stryker,Health Care Equipment & Supplies,100.61B,No
+SYNA,Synaptics,Semiconductors & Semiconductor Equipment,9.64B,No
+SYNH,Syneos Health,Life Sciences Tools & Services,9.33B,No
+SYY,Sysco,Food & Staples Retailing,40.90B,No
+T,"AT&T, Inc.",Diversified Telecommunication Services,194.09B,No
+TAK,Takeda Pharmaceutical Company,Pharmaceuticals,45.95B,No
+TAP,Molson Coors Beverage Company,Beverages,11.23B,No
+TCOM,Trip.com Group,Internet & Direct Marketing Retail,15.56B,No
+TD,The Toronto-Dominion Bank,Banks,149.45B,No
+TDG,TransDigm Group,Aerospace & Defense,35.66B,No
+TDOC,Teladoc Health,Health Care Technology,12.74B,No
+TDY,Teledyne Technologies,Aerospace & Defense,19.62B,No
+TEAM,Atlassian,Software,75.17B,No
+TECH,Bio-Techne,Life Sciences Tools & Services,15.33B,No
+TECK,Teck Resources,Metals & Mining,18.16B,No
+TEF,Telefonica,Diversified Telecommunication Services,26.34B,No
+TEL,TE Connectivity,"Electronic Equipment, Instruments & C...",52.40B,No
+TER,Teradyne,Semiconductors & Semiconductor Equipment,26.83B,No
+TEVA,Teva Pharmaceutical Industries,Pharmaceuticals,10.18B,No
+TFC,Truist Financial,Banks,89.98B,No
+TFII,TFI International,Road & Rail,9.02B,No
+TFX,Teleflex,Health Care Equipment & Supplies,15.26B,No
+TGT,Target,Multiline Retail,106.08B,No
+THC,Tenet Healthcare,Health Care Providers & Services,8.68B,No
+TJX,The TJX Companies,Specialty Retail,84.91B,No
+TLK,Telkom Indonesia,Diversified Telecommunication Services,29.40B,No
+TM,Toyota Motor,Automobiles,291.15B,No
+TME,Tencent Music Entertainment Group,Entertainment,12.02B,No
+TMO,Thermo Fisher Scientific,Life Sciences Tools & Services,234.38B,No
+TMUS,T-Mobile US,Wireless Telecommunication Services,135.55B,No
+TOST,Toast,Software-Infrastructure,12.72B,No
+TPG,TPG Inc.,Asset Management,10.06B,No
+TPL,Texas Pacific Land,"Oil, Gas & Consumable Fuels",8.61B,No
+TPR,Tapestry,"Textiles, Apparel & Luxury Goods",10.56B,No
+TREX,Trex Company,Building Products,12.31B,No
+TRGP,Targa Resources,"Oil, Gas & Consumable Fuels",13.23B,No
+TRI,Thomson Reuters,Professional Services,53.58B,No
+TRMB,Trimble,"Electronic Equipment, Instruments & C...",19.06B,No
+TROW,T. Rowe Price Group,Capital Markets,40.10B,No
+TRP,TC Energy,"Oil, Gas & Consumable Fuels",49.25B,No
+TRU,TransUnion,Professional Services,20.79B,No
+TRV,The Travelers Companies,Insurance,40.15B,No
+TS,Tenaris,Energy Equipment & Services,14.05B,No
+TSCO,Tractor Supply Company,Specialty Retail,25.26B,No
+TSLA,Tesla,Automobiles,"1,054.08B",No
+TSM,Taiwan Semiconductor Manufacturing Company,Semiconductors & Semiconductor Equipment,729.46B,No
+TSN,Tyson Foods,Food Products,34.04B,No
+TT,Trane Technologies,Building Products,42.76B,No
+TTC,The Toro Company,Machinery,10.30B,No
+TTD,The Trade Desk,Software,38.86B,No
+TTE,TotalEnergies SE,"Oil, Gas & Consumable Fuels",148.65B,No
+TTM,Tata Motors,Automobiles,26.42B,No
+TTWO,Take-Two Interactive Software,Entertainment,17.61B,No
+TU,TELUS,Diversified Telecommunication Services,32.34B,No
+TW,Tradeweb Markets,Capital Markets,18.53B,No
+TWLO,Twilio,IT Services,38.37B,No
+TWTR,Twitter,Interactive Media & Services,30.74B,No
+TX,Ternium,Metals & Mining,9.14B,No
+TXG,10X Genomics,Life Sciences Tools & Services,11.62B,No
+TXN,Texas Instruments,Semiconductors & Semiconductor Equipment,172.71B,No
+TXT,Textron,Aerospace & Defense,16.90B,No
+TYL,Tyler Technologies,Software,19.69B,No
+U,Unity Software,Software,34.46B,No
+UA,Under Armour,"Textiles, Apparel & Luxury Goods",8.30B,No
+UAA,Under Armour,"Textiles, Apparel & Luxury Goods",8.30B,No
+UAL,United Airlines Holdings,Airlines,15.13B,No
+UBER,Uber Technologies,Road & Rail,80.53B,No
+UBS,UBS Group AG,Capital Markets,67.60B,No
+UDR,"UDR, Inc.",Equity Real Estate Investment Trusts...,18.11B,No
+UGI,UGI Corporation,Gas Utilities,9.68B,No
+UHAL,Amerco,Road & Rail,13.26B,No
+UHS,Universal Health Services,Health Care Providers & Services,10.74B,No
+UI,Ubiquiti,Communications Equipment,18.84B,No
+UL,Unilever,Personal Products,139.32B,No
+ULTA,Ulta Beauty,Specialty Retail,20.27B,No
+UMC,United Microelectronics,Semiconductors & Semiconductor Equipment,28.94B,No
+UNH,UnitedHealth Group,Health Care Providers & Services,441.44B,No
+UNP,Union Pacific,Road & Rail,158.32B,No
+UPS,United Parcel Service,Air Freight & Logistics,179.51B,No
+UPST,Upstart Holdings,Consumer Finance,9.11B,No
+URI,United Rentals,Trading Companies & Distributors,23.73B,No
+USB,U.S. Bancorp,Banks,93.79B,No
+USFD,US Foods Holding,Food & Staples Retailing,8.23B,No
+UTHR,United Therapeutics,Biotechnology,9.64B,No
+UWMC,UWM Holdings,Mortgage Finance,9.18B,No
+V,"Visa, Inc.",IT Services,466.65B,No
+VALE,Vale S.A.,Metals & Mining,72.29B,No
+VEEV,Veeva Systems,Health Care Technology,34.42B,No
+VFC,VF Corporation,"Textiles, Apparel & Luxury Goods",28.38B,No
+VIAC,ViacomCBS,Media,24.02B,No
+VIACA,ViacomCBS,Media,24.02B,No
+VICI,VICI Properties,Equity Real Estate Investment Trusts...,17.95B,No
+VIV,Telefonica Brasil,Telecom Services,14.24B,No
+VLO,Valero Energy,"Oil, Gas & Consumable Fuels",34.83B,No
+VMC,Vulcan Materials Company,Construction Materials,25.51B,No
+VMW,VMware,Software,52.53B,No
+VNO,Vornado Realty Trust,Equity Real Estate Investment Trusts...,8.87B,No
+VOD,Vodafone Group,Wireless Telecommunication Services,44.61B,No
+VOYA,Voya Financial,Diversified Financial Services,8.27B,No
+VRSK,Verisk Analytics,Professional Services,31.93B,No
+VRSN,VeriSign,IT Services,25.16B,No
+VRT,Vertiv Holdings Co.,Electrical Equipment & Parts,8.75B,No
+VRTX,Vertex Pharmaceuticals,Biotechnology,59.51B,No
+VST,Vistra,Independent Power and Renewable Elect...,10.90B,No
+VTR,Ventas,Equity Real Estate Investment Trusts...,21.13B,No
+VTRS,Viatris,Pharmaceuticals,18.41B,No
+VZ,Verizon Communications,Diversified Telecommunication Services,223.66B,No
+W,Wayfair,Internet & Direct Marketing Retail,17.93B,No
+WAB,Westinghouse Air Brake Technologies,Machinery,17.88B,No
+WAL,Western Alliance Bancorporation,Banks,12.75B,No
+WAT,Waters,Life Sciences Tools & Services,20.37B,No
+WB,Weibo,Interactive Media & Services,12.47B,No
+WBA,Walgreens Boots Alliance,Food & Staples Retailing,46.88B,No
+WBK,Westpac Banking,Banks,57.24B,No
+WCN,Waste Connections,Commercial Services & Supplies,32.73B,No
+WDAY,Workday,Software,63.58B,No
+WDC,Western Digital,"Technology Hardware, Storage & Periph...",20.77B,No
+WEC,WEC Energy Group,Multi-Utilities,30.36B,No
+WELL,Welltower,Equity Real Estate Investment Trusts...,38.09B,No
+WES,Western Midstream Partners LP,"Oil, Gas & Consumable Fuels",9.82B,No
+WF,Woori Financial Group,Banks,9.23B,No
+WFC,Wells Fargo & Company,Banks,231.50B,No
+WFG,West Fraser Timber Company,Paper & Forest Products,10.43B,No
+WHR,Whirlpool,Household Durables,13.18B,No
+WIT,Wipro,IT Services,47.26B,No
+WLK,Westlake Chemical,Chemicals,13.71B,No
+WM,Waste Management,Commercial Services & Supplies,65.53B,No
+WMB,The Williams Companies,"Oil, Gas & Consumable Fuels",35.59B,No
+WMG,Warner Music Group,Entertainment,20.72B,No
+WMS,Advanced Drainage Systems,Building Products,8.51B,No
+WMT,Walmart,Food & Staples Retailing,402.38B,No
+WOLF,Wolfspeed,Semiconductors,12.56B,No
+WPC,WP Carey,Equity Real Estate Investment Trusts...,14.75B,No
+WPM,Wheaton Precious Metals,Metals & Mining,17.92B,No
+WPP,WPP plc,Media,18.79B,No
+WRB,W.R. Berkley,Insurance,15.12B,No
+WRK,WestRock Company,Containers & Packaging,12.34B,No
+WSC,WillScot Mobile Mini Holdings,Construction & Engineering,8.57B,No
+WSM,Williams-Sonoma,Specialty Retail,10.73B,No
+WSO,Watsco,Trading Companies & Distributors,11.53B,No
+WST,West Pharmaceutical Services,Health Care Equipment & Supplies,28.13B,No
+WTRG,Essential Utilities,Water Utilities,12.49B,No
+WTW,Willis Towers Watson,Insurance,29.57B,No
+WY,Weyerhaeuser Company,Equity Real Estate Investment Trusts...,30.70B,No
+WYNN,Wynn Resorts,"Hotels, Restaurants & Leisure",10.58B,No
+XEL,Xcel Energy,Electric Utilities,37.15B,No
+XLNX,Xilinx,Semiconductors & Semiconductor Equipment,49.19B,No
+XM,Qualtrics International,Software-Application,15.53B,No
+XOM,Exxon Mobil,"Oil, Gas & Consumable Fuels",306.22B,No
+XP,XP Inc.,Capital Markets,16.08B,No
+XPEV,XPeng,Automobiles,42.55B,No
+XRAY,Dentsply Sirona,Health Care Equipment & Supplies,11.79B,No
+XYL,Xylem,Machinery,20.11B,No
+Y,Alleghany,Insurance,9.38B,No
+YMM,Full Truck Alliance Co.,Software-Application,9.62B,No
+YNDX,Yandex,Interactive Media & Services,18.77B,No
+YUM,Yum! Brands,"Hotels, Restaurants & Leisure",37.25B,No
+YUMC,Yum China Holdings,"Hotels, Restaurants & Leisure",19.92B,No
+Z,Zillow Group,Interactive Media & Services,14.06B,No
+ZBH,Zimmer Biomet Holdings,Health Care Equipment & Supplies,26.61B,No
+ZBRA,Zebra Technologies,"Electronic Equipment, Instruments & C...",28.22B,No
+ZEN,Zendesk,Software,12.21B,No
+ZG,Zillow Group,Interactive Media & Services,14.06B,No
+ZI,ZoomInfo Technologies,Interactive Media & Services,20.74B,No
+ZION,Zions Bancorporation NA,Banks,11.05B,No
+ZM,Zoom Video Communications,Software,47.60B,No
+ZNGA,Zynga,Entertainment,10.13B,No
+ZNH,China Southern Airlines Company,Airlines,16.62B,No
+ZS,Zscaler,Software,35.68B,No
+ZTO,ZTO Express (Cayman),Air Freight & Logistics,26.13B,No
+ZTS,Zoetis,Pharmaceuticals,97.55B,No

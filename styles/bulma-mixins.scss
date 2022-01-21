@@ -1,0 +1,11 @@
+.bulma-arrow-mixin {
+    @include arrow(purple);
+}
+
+.my-element {
+    background: red;
+  
+    @include from(1280px) {
+        background: blue;
+    }
+}

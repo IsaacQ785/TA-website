@@ -1,0 +1,48 @@
+// @import "bulma/sass/utilities/_all.sass";
+// @import "bulma/sass/grid/columns.sass";
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.form {
+  width: 100%;
+}
+
+.formItem {
+  display: block;
+  width: 100%;
+}
+
+.formItem label {
+  display: block;
+}
+
+.formItem input[type='text'] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+
+.formItem textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+}
+
+.error {
+  color: red;
+}
+
+.message {
+  color: green;
+}
+
+.chart {
+  max-width: 2500px;
+  /* margin: 350px auto; */
+  padding: 15px;
+  border-right-width: 40px;
+}
