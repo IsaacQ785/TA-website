@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-
 import Nav from "../components/Nav";
 import styles from "../styles/Home.module.scss";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import { process50ma } from "../graph functions/movingaverage50";
+import {
+  bollBandData,
+  bollingerBands,
+} from "../graph functions/bollingerBands";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 const PlotlyChart = dynamic(() => import("react-plotlyjs-ts"), { ssr: false });
@@ -45,16 +48,24 @@ export default function OHLCChart({ tickers, default_data }) {
     High: [],
     Low: [],
   });
+  const [bollBands, setBB] = useState<bollBandData>({
+    Date: [],
+    extremes: [],
+    middle: [],
+    extreme_dates: [],
+  });
 
   // set visiblity hooks
   const [v_ohlc, setv_ohlc] = useState(true);
   const [v_50ma, setv_ma50] = useState(false);
-
+  const [v_BB, setv_BB] = useState(false);
   // onLoad, set initial values in the window
   useEffect(() => {
     setClientSide(true);
     setData(default_data);
     setma50(process50ma(default_data));
+    setBB(bollingerBands(default_data));
+    console.log(bollBands);
   }, [clientSide]);
 
   // transform stock data
@@ -111,7 +122,7 @@ export default function OHLCChart({ tickers, default_data }) {
     if (trace.success) {
       set_viewed_ticker(ticker);
       setTicker("");
-      const data_transformed = {
+      const data_transformed: StockData = {
         Date: unpack(trace.message, "Date").reverse(),
         close: unpack(trace.message, "Close/Last").reverse(),
         Volume: unpack(trace.message, "Volume").reverse(),
@@ -120,8 +131,8 @@ export default function OHLCChart({ tickers, default_data }) {
         Low: unpack(trace.message, "Low").reverse(),
       };
       setData(data_transformed);
-      console.log(trace.message);
       setma50(process50ma(data_transformed));
+      setBB(bollingerBands(data_transformed));
       return setMessage(ticker);
     } else {
       return setError(trace.message);
@@ -238,6 +249,14 @@ export default function OHLCChart({ tickers, default_data }) {
                   >
                     Toggle 50-day-MA
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setv_BB(!v_BB);
+                    }}
+                  >
+                    Toggle Bollinger Bands
+                  </button>
                 </div>
                 <div className="tile is-parent">
                   <PlotlyChart
@@ -259,12 +278,33 @@ export default function OHLCChart({ tickers, default_data }) {
                       },
                       {
                         x: ma50.Date,
-                        y: ma50.Open,
+                        y: ma50.close,
                         type: "line",
                         xaxis: "x",
                         yaxis: "y",
                         visible: v_50ma,
                         marker: { color: "orange" },
+                      },
+                      {
+                        x: bollBands.Date,
+                        y: bollBands.middle,
+                        type: "line",
+                        xaxis: "x",
+                        yaxis: "y",
+                        marker: { color: "orange" },
+                        line: { color: "rgb(0,176,246)" },
+                        visible: v_BB,
+                      },
+                      {
+                        x: bollBands.extreme_dates,
+                        y: bollBands.extremes,
+                        fill: "tozeroy",
+                        xaxis: "x",
+                        yaxis: "y",
+                        fillcolor: "rgba(0,176,246,0.2)",
+                        line: { color: "transparent" },
+                        type: "line",
+                        visible: v_BB,
                       },
                     ]}
                     layout={{
@@ -286,31 +326,6 @@ export default function OHLCChart({ tickers, default_data }) {
                       modebar: {
                         add: ["drawline", "eraseshape"],
                       },
-                      // updatemenus: [
-                      //   {
-                      //     type:"buttons",
-                      //     bgcolor:"lightblue",
-                      //     buttons: [
-                      //       {
-                      //         args: [
-                      //           { visible: [!visible_plots["OHLC"],visible_plots["50MA"]] },
-                      //           { title: `${viewed_ticker} hide` },
-                      //         ],
-                      //         label: `Toggle ${viewed_ticker}`,
-                      //         method: `update`,
-                      //       },
-                      //       {
-                      //         args: [
-                      //           { visible: [visible_plots["OHLC"],!visible_plots["50MA"]]},
-                      //           { title: `50MA`},
-                      //         ],
-                      //           label: `Toggle 50MA`,
-                      //           method: `update`,
-
-                      //       }
-                      //     ],
-                      //   },
-                      // ],
                     }}
                   />
                 </div>
