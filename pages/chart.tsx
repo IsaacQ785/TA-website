@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import Nav from "../components/Nav";
 import styles from "../styles/Home.module.scss";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Head from "next/head";
+
 import { processma } from "../graph functions/movingaverage";
 import {
   bollBandData,
   bollingerBands,
 } from "../graph functions/bollingerBands";
-import Image from "next/image";
+import { onBalanceVolume } from "../graph functions/onBalanceVolume";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 const PlotlyChart = dynamic(() => import("react-plotlyjs-ts"), { ssr: false });
@@ -63,12 +65,17 @@ export default function OHLCChart({ tickers, default_data }) {
     middle: [],
     extreme_dates: [],
   });
+  const [OBV, setOBV] = useState({
+    date: [],
+    OBV: [],
+  });
 
   // set visiblity hooks
   const [v_ohlc, setv_ohlc] = useState(true);
   const [v_50ma, setv_ma50] = useState(false);
   const [v_200ma, setv_ma200] = useState(false);
   const [v_BB, setv_BB] = useState(false);
+  const [v_OBV, setv_OBV] = useState(false);
   // onLoad, set initial values in the window
   useEffect(() => {
     setClientSide(true);
@@ -76,7 +83,8 @@ export default function OHLCChart({ tickers, default_data }) {
     setma50(processma(default_data, 50));
     setma200(processma(default_data, 200));
     setBB(bollingerBands(default_data));
-    console.log(bollBands);
+    setOBV(onBalanceVolume(default_data));
+    console.log(OBV);
   }, [clientSide]);
 
   // transform stock data
@@ -145,6 +153,7 @@ export default function OHLCChart({ tickers, default_data }) {
       setma50(processma(data_transformed, 50));
       setma200(processma(data_transformed, 200));
       setBB(bollingerBands(data_transformed));
+      setOBV(onBalanceVolume(data_transformed));
       return setMessage(ticker);
     } else {
       return setError(trace.message);
@@ -277,6 +286,14 @@ export default function OHLCChart({ tickers, default_data }) {
                   >
                     Toggle Bollinger Bands
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setv_OBV(!v_OBV);
+                    }}
+                  >
+                    Toggle On Balance Volume
+                  </button>
                 </div>
                 <div className="tile is-parent">
                   <PlotlyChart
@@ -291,7 +308,7 @@ export default function OHLCChart({ tickers, default_data }) {
                         increasing: { line: { color: "green" } },
                         decreasing: { line: { color: "red" } },
                         visible: v_ohlc,
-                        name:"AAPL D",
+                        name: "AAPL D",
 
                         type: "candlestick",
                         xaxis: "x",
@@ -305,7 +322,7 @@ export default function OHLCChart({ tickers, default_data }) {
                         yaxis: "y",
                         visible: v_50ma,
                         marker: { color: "orange" },
-                        name:"50MA",
+                        name: "50MA",
                       },
                       {
                         x: ma200.Date,
@@ -315,7 +332,7 @@ export default function OHLCChart({ tickers, default_data }) {
                         yaxis: "y",
                         visible: v_200ma,
                         marker: { color: "yellow" },
-                        name:"200MA",
+                        name: "200MA",
                       },
                       {
                         x: bollBands.Date,
@@ -326,7 +343,7 @@ export default function OHLCChart({ tickers, default_data }) {
                         marker: { color: "orange" },
                         line: { color: "rgba(0,0,200, 0.3)" },
                         visible: v_BB,
-                        name:"Bollinger Bands",
+                        name: "Bollinger Bands",
                       },
                       {
                         x: bollBands.extreme_dates,
@@ -335,10 +352,20 @@ export default function OHLCChart({ tickers, default_data }) {
                         xaxis: "x",
                         yaxis: "y",
                         fillcolor: "rgba(0,176,246,0.2)",
-                        line: { color: "rgba(0,0,200, 0.3)" }, /*173, 216, 230*/
+                        line: { color: "rgba(0,0,200, 0.3)" } /*173, 216, 230*/,
                         type: "line",
                         visible: v_BB,
-                        name:"Bollinger Bands",
+                        name: "Bollinger Bands",
+                      },
+                      {
+                        x: OBV.date,
+                        y: OBV.OBV,
+                        xaxis: "x",
+                        yaxis: "y2",
+                        line: { color: "rgba(0,0,200, 1)" } /*173, 216, 230*/,
+                        type: "line",
+                        visible: v_OBV,
+                        name: "On Balance Volume",
                       },
                     ]}
                     layout={{
@@ -350,12 +377,25 @@ export default function OHLCChart({ tickers, default_data }) {
                       dragmode: "zoom",
                       showlegend: true,
                       xaxis: {
+                        domain: [0, 1],
+                        anchor: "y2",
+                      },
+                      yaxis: {
+                        domain: [0.25, 1],
+                        fixedrange: false,
+                        anchor: "x",
+                      },
+                      xaxis2: {
+                        domain: [0, 1],
                         rangeslider: {
                           visible: true,
                         },
+                        anchor: "y2",
                       },
-                      yaxis: {
+                      yaxis2: {
+                        domain: [0, 0.25],
                         fixedrange: false,
+                        anchor: "x2",
                       },
                       modebar: {
                         add: ["drawline", "eraseshape"],
@@ -368,12 +408,14 @@ export default function OHLCChart({ tickers, default_data }) {
                   <h1>Fake Ads here</h1>
                   <Image
                     src="https://www.designyourway.net/blog/wp-content/uploads/2010/11/Nike-Print-Ads-12.jpg"
-                    width="300" height="500"
+                    width="300"
+                    height="500"
                     alt="Advert #1"
                   ></Image>
                   <Image
                     src="https://landerapp.com/blog/wp-content/uploads/2018/08/barcadi.jpg"
-                    width="300" height="500"
+                    width="300"
+                    height="500"
                     alt="Advert #2"
                   ></Image>
                 </div>
