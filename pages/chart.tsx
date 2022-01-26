@@ -3,11 +3,12 @@ import Nav from "../components/Nav";
 import styles from "../styles/Home.module.scss";
 import dynamic from "next/dynamic";
 import Head from "next/head";
-import { process50ma } from "../graph functions/movingaverage50";
+import { processma } from "../graph functions/movingaverage";
 import {
   bollBandData,
   bollingerBands,
 } from "../graph functions/bollingerBands";
+import Image from "next/image";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 const PlotlyChart = dynamic(() => import("react-plotlyjs-ts"), { ssr: false });
@@ -48,6 +49,14 @@ export default function OHLCChart({ tickers, default_data }) {
     High: [],
     Low: [],
   });
+  const [ma200, setma200] = useState<StockData>({
+    Date: [],
+    close: [],
+    Volume: [],
+    Open: [],
+    High: [],
+    Low: [],
+  });
   const [bollBands, setBB] = useState<bollBandData>({
     Date: [],
     extremes: [],
@@ -58,12 +67,14 @@ export default function OHLCChart({ tickers, default_data }) {
   // set visiblity hooks
   const [v_ohlc, setv_ohlc] = useState(true);
   const [v_50ma, setv_ma50] = useState(false);
+  const [v_200ma, setv_ma200] = useState(false);
   const [v_BB, setv_BB] = useState(false);
   // onLoad, set initial values in the window
   useEffect(() => {
     setClientSide(true);
     setData(default_data);
-    setma50(process50ma(default_data));
+    setma50(processma(default_data, 50));
+    setma200(processma(default_data, 200));
     setBB(bollingerBands(default_data));
     console.log(bollBands);
   }, [clientSide]);
@@ -131,7 +142,8 @@ export default function OHLCChart({ tickers, default_data }) {
         Low: unpack(trace.message, "Low").reverse(),
       };
       setData(data_transformed);
-      setma50(process50ma(data_transformed));
+      setma50(processma(data_transformed, 50));
+      setma200(processma(data_transformed, 200));
       setBB(bollingerBands(data_transformed));
       return setMessage(ticker);
     } else {
@@ -252,6 +264,14 @@ export default function OHLCChart({ tickers, default_data }) {
                   <button
                     type="button"
                     onClick={() => {
+                      setv_ma200(!v_200ma);
+                    }}
+                  >
+                    Toggle 200-day-MA
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
                       setv_BB(!v_BB);
                     }}
                   >
@@ -271,6 +291,7 @@ export default function OHLCChart({ tickers, default_data }) {
                         increasing: { line: { color: "green" } },
                         decreasing: { line: { color: "red" } },
                         visible: v_ohlc,
+                        name:"AAPL D",
 
                         type: "candlestick",
                         xaxis: "x",
@@ -284,6 +305,17 @@ export default function OHLCChart({ tickers, default_data }) {
                         yaxis: "y",
                         visible: v_50ma,
                         marker: { color: "orange" },
+                        name:"50MA",
+                      },
+                      {
+                        x: ma200.Date,
+                        y: ma200.close,
+                        type: "line",
+                        xaxis: "x",
+                        yaxis: "y",
+                        visible: v_200ma,
+                        marker: { color: "yellow" },
+                        name:"200MA",
                       },
                       {
                         x: bollBands.Date,
@@ -292,8 +324,9 @@ export default function OHLCChart({ tickers, default_data }) {
                         xaxis: "x",
                         yaxis: "y",
                         marker: { color: "orange" },
-                        line: { color: "rgb(0,176,246)" },
+                        line: { color: "rgba(0,0,200, 0.3)" },
                         visible: v_BB,
+                        name:"Bollinger Bands",
                       },
                       {
                         x: bollBands.extreme_dates,
@@ -302,9 +335,10 @@ export default function OHLCChart({ tickers, default_data }) {
                         xaxis: "x",
                         yaxis: "y",
                         fillcolor: "rgba(0,176,246,0.2)",
-                        line: { color: "transparent" },
+                        line: { color: "rgba(0,0,200, 0.3)" }, /*173, 216, 230*/
                         type: "line",
                         visible: v_BB,
+                        name:"Bollinger Bands",
                       },
                     ]}
                     layout={{
@@ -314,7 +348,7 @@ export default function OHLCChart({ tickers, default_data }) {
                         ? window.screen.availHeight * 0.75
                         : 1300,
                       dragmode: "zoom",
-                      showlegend: false,
+                      showlegend: true,
                       xaxis: {
                         rangeslider: {
                           visible: true,
@@ -332,14 +366,16 @@ export default function OHLCChart({ tickers, default_data }) {
 
                 <div className="container">
                   <h1>Fake Ads here</h1>
-                  <img
+                  <Image
                     src="https://www.designyourway.net/blog/wp-content/uploads/2010/11/Nike-Print-Ads-12.jpg"
-                    width="350"
-                  ></img>
-                  <img
+                    width="300" height="500"
+                    alt="Advert #1"
+                  ></Image>
+                  <Image
                     src="https://landerapp.com/blog/wp-content/uploads/2018/08/barcadi.jpg"
-                    width="350"
-                  ></img>
+                    width="300" height="500"
+                    alt="Advert #2"
+                  ></Image>
                 </div>
               </div>
             </div>

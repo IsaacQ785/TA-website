@@ -1,18 +1,19 @@
-import Link from 'next/link';
-
+import Link from "next/link";
 import styles from "../styles/Nav.module.scss";
+import Image from "next/image";
 
 export default function Nav() {
-    return (
-        <nav className="navbar" role="navigation" aria-label="main navigation">
+  return (
+    <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">
-          <img
+        <Link href="/" passHref>
+          <Image
             width="112"
             height="40"
+            alt="Website Logo"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fbestbrokerindia.com%2Fblog%2Fwp-content%2Fuploads%2F2019%2F05%2FTechnical-Analysis-Basics.jpg&f=1&nofb=1"
           />
-        </a>
+        </Link>
 
         <a
           role="button"
@@ -28,13 +29,16 @@ export default function Nav() {
       </div>
       <div id="navbarBasicExample" className="navbar-menu">
         <div className="navbar-start">
-          <a className="navbar-item" href="/">
-            Home
-          </a>
-
-          <a className="navbar-item" href="/chart">
-            Charts
-          </a>
+          <div className="navbar-item">
+            <Link passHref href="/">
+              <a>Home</a>
+            </Link>
+          </div>
+          <div className="navbar-item">
+            <Link passHref href="/chart">
+            <a>Charts</a>
+            </Link>
+          </div>
         </div>
 
         <div className="navbar-end">
@@ -49,5 +53,5 @@ export default function Nav() {
         </div>
       </div>
     </nav>
-    );
+  );
 }
