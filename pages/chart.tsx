@@ -12,6 +12,7 @@ import {
 } from "../graph functions/bollingerBands";
 import { onBalanceVolume } from "../graph functions/onBalanceVolume";
 import { calculateMACD } from "../graph functions/calculateMACD";
+import { calculateADX } from "../graph functions/averageDirectionIndex";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 const PlotlyChart = dynamic(() => import("react-plotlyjs-ts"), { ssr: false });
@@ -75,6 +76,10 @@ export default function OHLCChart({ tickers, default_data }) {
   const [MACD, setMACD] = useState({
     date: [],
     macd: [],
+  });
+  const [ADX, setADX] = useState({
+    Date: [],
+    adx: [],
   })
 
   // set visiblity hooks
@@ -84,6 +89,7 @@ export default function OHLCChart({ tickers, default_data }) {
   const [v_BB, setv_BB] = useState(false);
   const [v_OBV, setv_OBV] = useState(false);
   const [v_MACD, setv_MACD] = useState(false);
+  const [v_ADX, setv_ADX] = useState(false);
   // onLoad, set initial values in the window
   useEffect(() => {
     setClientSide(true);
@@ -93,7 +99,7 @@ export default function OHLCChart({ tickers, default_data }) {
     setBB(bollingerBands(default_data));
     setOBV(onBalanceVolume(default_data));
     setMACD(calculateMACD(default_data));
-    console.log(MACD);
+    setADX(calculateADX(default_data,14,14));
   }, [clientSide]);
 
   // transform stock data
@@ -183,6 +189,7 @@ export default function OHLCChart({ tickers, default_data }) {
       setBB(bollingerBands(data_transformed));
       setOBV(onBalanceVolume(data_transformed));
       setMACD(calculateMACD(data_transformed));
+      setADX(calculateADX(data_transformed,14,14));
       return setMessage(ticker);
     } else {
       return setError(trace.message);
@@ -336,6 +343,15 @@ export default function OHLCChart({ tickers, default_data }) {
                   >
                     Toggle MACD
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setv_ADX(!v_ADX);
+                      // changeNV(v_MACD);
+                    }}
+                  >
+                    Toggle ADX
+                  </button>
                 </div>
                 <div className="tile is-parent">
                   <PlotlyChart
@@ -418,6 +434,16 @@ export default function OHLCChart({ tickers, default_data }) {
                         type: "line",
                         visible: v_MACD,
                         name: "MACD",
+                      },
+                      {
+                        x: ADX.Date,
+                        y: ADX.adx,
+                        xaxis: "x",
+                        yaxis: "y2",
+                        line: { color: "rgba(200,200,200, 1)" } /*173, 216, 230*/,
+                        type: "line",
+                        visible: v_ADX,
+                        name: "ADX",
                       },
                     ]}
                     layout={{

@@ -49,6 +49,5 @@ export function processma(data: StockData, days: number) {
       initial_sums.Low -= Number(data.Low.at(i));
     }
   }
-  console.log(tmp_daysma);
   return tmp_daysma;
 }
