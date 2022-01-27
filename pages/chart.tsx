@@ -11,9 +11,11 @@ import {
   bollingerBands,
 } from "../graph functions/bollingerBands";
 import { onBalanceVolume } from "../graph functions/onBalanceVolume";
+import { calculateMACD } from "../graph functions/calculateMACD";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 const PlotlyChart = dynamic(() => import("react-plotlyjs-ts"), { ssr: false });
+
 
 export interface StockData {
   Date: string[];
@@ -33,6 +35,7 @@ export default function OHLCChart({ tickers, default_data }) {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [clientSide, setClientSide] = useState(false);
+  const [num_visible, setnum_visible] = useState(Infinity);
 
   // initialize plotting variables
   const [s_data, setData] = useState<StockData>({
@@ -69,6 +72,10 @@ export default function OHLCChart({ tickers, default_data }) {
     date: [],
     OBV: [],
   });
+  const [MACD, setMACD] = useState({
+    date: [],
+    macd: [],
+  })
 
   // set visiblity hooks
   const [v_ohlc, setv_ohlc] = useState(true);
@@ -76,6 +83,7 @@ export default function OHLCChart({ tickers, default_data }) {
   const [v_200ma, setv_ma200] = useState(false);
   const [v_BB, setv_BB] = useState(false);
   const [v_OBV, setv_OBV] = useState(false);
+  const [v_MACD, setv_MACD] = useState(false);
   // onLoad, set initial values in the window
   useEffect(() => {
     setClientSide(true);
@@ -84,7 +92,8 @@ export default function OHLCChart({ tickers, default_data }) {
     setma200(processma(default_data, 200));
     setBB(bollingerBands(default_data));
     setOBV(onBalanceVolume(default_data));
-    console.log(OBV);
+    setMACD(calculateMACD(default_data));
+    console.log(MACD);
   }, [clientSide]);
 
   // transform stock data
@@ -94,6 +103,25 @@ export default function OHLCChart({ tickers, default_data }) {
     });
   }
 
+  /// Doesnt work - use to set ## of subplots for MACD, Vol, etc.
+
+  // function changeNV(toggled) {
+  //   console.log(num_visible)
+  //   if (num_visible===Infinity) {
+  //     setnum_visible(1);
+  //     return;
+  //   }
+  //   const pos = toggled ?  1: -1;
+  //   const nv = num_visible + pos;
+  //   if (nv===0) {
+  //     setnum_visible(Infinity);
+  //     return;
+  //   }
+  //   else {
+  //     setnum_visible(num_visible+pos);
+  //     return;
+  //   }
+  // }
   // update tickers in dropdown list
   function filterTickers() {
     const search_term = ticker.toLowerCase();
@@ -154,6 +182,7 @@ export default function OHLCChart({ tickers, default_data }) {
       setma200(processma(data_transformed, 200));
       setBB(bollingerBands(data_transformed));
       setOBV(onBalanceVolume(data_transformed));
+      setMACD(calculateMACD(data_transformed));
       return setMessage(ticker);
     } else {
       return setError(trace.message);
@@ -266,6 +295,7 @@ export default function OHLCChart({ tickers, default_data }) {
                     type="button"
                     onClick={() => {
                       setv_ma50(!v_50ma);
+                      // changeNV(v_50ma);
                     }}
                   >
                     Toggle 50-day-MA
@@ -274,6 +304,7 @@ export default function OHLCChart({ tickers, default_data }) {
                     type="button"
                     onClick={() => {
                       setv_ma200(!v_200ma);
+                      // changeNV(v_200ma);
                     }}
                   >
                     Toggle 200-day-MA
@@ -282,6 +313,7 @@ export default function OHLCChart({ tickers, default_data }) {
                     type="button"
                     onClick={() => {
                       setv_BB(!v_BB);
+                      // changeNV(v_BB);
                     }}
                   >
                     Toggle Bollinger Bands
@@ -290,9 +322,19 @@ export default function OHLCChart({ tickers, default_data }) {
                     type="button"
                     onClick={() => {
                       setv_OBV(!v_OBV);
+                      // changeNV(v_OBV);
                     }}
                   >
                     Toggle On Balance Volume
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setv_MACD(!v_MACD);
+                      // changeNV(v_MACD);
+                    }}
+                  >
+                    Toggle MACD
                   </button>
                 </div>
                 <div className="tile is-parent">
@@ -367,6 +409,16 @@ export default function OHLCChart({ tickers, default_data }) {
                         visible: v_OBV,
                         name: "On Balance Volume",
                       },
+                      {
+                        x: MACD.date,
+                        y: MACD.macd,
+                        xaxis: "x",
+                        yaxis: "y2",
+                        line: { color: "rgba(0,200,200, 1)" } /*173, 216, 230*/,
+                        type: "line",
+                        visible: v_MACD,
+                        name: "MACD",
+                      },
                     ]}
                     layout={{
                       title: viewed_ticker,
@@ -390,13 +442,26 @@ export default function OHLCChart({ tickers, default_data }) {
                         rangeslider: {
                           visible: true,
                         },
-                        anchor: "y2",
+                        anchor: "y",
                       },
                       yaxis2: {
                         domain: [0, 0.25],
                         fixedrange: false,
-                        anchor: "x2",
+                        anchor: "x",
                       },
+                      // To be added + more for multiple subplots for MACD, Vol etc.
+                      // xaxis3: {
+                      //   domain: [0, 1],
+                      //   rangeslider: {
+                      //     visible: true,
+                      //   },
+                      //   anchor: "y3",
+                      // },
+                      // yaxis3: {
+                      //   domain: [0.25*(1/num_visible),Math.min(0.25,0.25*(2/num_visible))],
+                      //   fixedrange: false,
+                      //   anchor: "x2",
+                      // },
                       modebar: {
                         add: ["drawline", "eraseshape"],
                       },
@@ -473,3 +538,5 @@ export async function getServerSideProps(ctx) {
     },
   };
 }
+
+
