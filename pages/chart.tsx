@@ -100,12 +100,13 @@ export default function OHLCChart({ tickers, default_data }) {
     setOBV(onBalanceVolume(default_data));
     setMACD(calculateMACD(default_data));
     setADX(calculateADX(default_data,14,14));
+    console.log(default_data)
   }, [clientSide]);
 
   // transform stock data
   function unpack(rows, key) {
     return rows.map(function (row) {
-      return row[key];
+      return row[key];//key=="Date" ? new Date(row[key]) : Number(row[key]);
     });
   }
 
@@ -176,12 +177,12 @@ export default function OHLCChart({ tickers, default_data }) {
       set_viewed_ticker(ticker);
       setTicker("");
       const data_transformed: StockData = {
-        Date: unpack(trace.message, "Date").reverse(),
-        close: unpack(trace.message, "Close/Last").reverse(),
-        Volume: unpack(trace.message, "Volume").reverse(),
-        Open: unpack(trace.message, "Open").reverse(),
-        High: unpack(trace.message, "High").reverse(),
-        Low: unpack(trace.message, "Low").reverse(),
+        Date: unpack(trace.message, "Date"),
+        close: unpack(trace.message, "Close/Last"),
+        Volume: unpack(trace.message, "Volume"),
+        Open: unpack(trace.message, "Open"),
+        High: unpack(trace.message, "High"),
+        Low: unpack(trace.message, "Low"),
       };
       setData(data_transformed);
       setma50(processma(data_transformed, 50));
