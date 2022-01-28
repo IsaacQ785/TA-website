@@ -1,9 +1,12 @@
+import { isReturnStatement } from "typescript";
 import { StockData } from "../pages/chart";
+import { processma } from "./movingaverage";
 
 export function calculateRSI(data: StockData, rsi_period: number) {
   let rsi = {
     Date: [],
     rsi: [],
+    ma_dates: [],
     ma: [],
   };
 
@@ -104,5 +107,10 @@ export function calculateRSI(data: StockData, rsi_period: number) {
     total_perc_higher -= Math.max(0, old_p_change);
     total_perc_lower -= Math.min(0, old_p_change);
   }
+  let unwrap = ({ Date, rsi }) => ({ Date, rsi });
+  const ma = processma(unwrap(rsi), rsi_period);
+  rsi.ma = ma.rsi;
+  rsi.ma_dates = ma["Date"];
+  console.log(rsi);
   return rsi;
 }
