@@ -48,7 +48,7 @@ export default function OHLCChart({ tickers, default_data }) {
     High: [],
     Low: [],
   });
-  const [ma50, setma50] = useState<StockData>({
+  const [ma50, setma50] = useState({
     Date: [],
     close: [],
     Volume: [],
@@ -56,7 +56,7 @@ export default function OHLCChart({ tickers, default_data }) {
     High: [],
     Low: [],
   });
-  const [ma200, setma200] = useState<StockData>({
+  const [ma200, setma200] = useState({
     Date: [],
     close: [],
     Volume: [],
@@ -85,6 +85,7 @@ export default function OHLCChart({ tickers, default_data }) {
   const [RSI, setRSI] = useState({
     Date: [],
     rsi: [],
+    ma_dates: [],
     ma: [],
   })
 
@@ -473,6 +474,16 @@ export default function OHLCChart({ tickers, default_data }) {
                         type: "line",
                         visible: v_RSI,
                         name: "RSI",
+                      },
+                      {
+                        x: RSI.ma_dates,
+                        y: RSI.ma,
+                        xaxis: "x",
+                        yaxis: "y2",
+                        line: { color: "rgba(100,50,150, 1)" } /*173, 216, 230*/,
+                        type: "line",
+                        visible: v_RSI,
+                        name: "RSI ma 14",
                       },
                     ]}
                     layout={{
