@@ -15,6 +15,7 @@ import { calculateMACD } from "../graph functions/calculateMACD";
 import { calculateADX } from "../graph functions/averageDirectionIndex";
 import { calculateRSI } from "../graph functions/relativeStrengthIndex";
 import { calculateAccDis } from "../graph functions/accumulationDistributionIdx";
+import { calculateStoOsc } from "../graph functions/stochasticOscillator";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 const PlotlyChart = dynamic(() => import("react-plotlyjs-ts"), { ssr: false });
@@ -93,6 +94,12 @@ export default function OHLCChart({ tickers, default_data }) {
     Date: [],
     accDis: [],
   });
+  const [stoOsc, setstoOsc] = useState({
+    k_Date: [],
+    k_fast: [],
+    d_Date: [],
+    d_slow: [],
+  });
 
   // set visiblity hooks
   const [v_ohlc, setv_ohlc] = useState(true);
@@ -104,6 +111,7 @@ export default function OHLCChart({ tickers, default_data }) {
   const [v_ADX, setv_ADX] = useState(false);
   const [v_RSI, setv_RSI] = useState(false);
   const [v_accDis, setv_accDis] = useState(false);
+  const [v_stoOsc, setv_stoOsc] = useState(false);
 
 
   // onLoad, set initial values in the window
@@ -117,8 +125,8 @@ export default function OHLCChart({ tickers, default_data }) {
     setMACD(calculateMACD(default_data));
     setADX(calculateADX(default_data,14,14));
     setRSI(calculateRSI(default_data,14));
-    setaccDis(calculateAccDis(default_data,14));
-    console.log(accDis);
+    setaccDis(calculateAccDis(default_data));
+    setstoOsc(calculateStoOsc(default_data,14,3));
   }, [clientSide]);
 
   // transform stock data
@@ -211,6 +219,7 @@ export default function OHLCChart({ tickers, default_data }) {
       setADX(calculateADX(data_transformed,14,14));
       setRSI(calculateRSI(data_transformed,14));
       setaccDis(calculateAccDis(data_transformed));
+      setstoOsc(calculateStoOsc(data_transformed,14,3));
       return setMessage(ticker);
     } else {
       return setError(trace.message);
@@ -391,6 +400,15 @@ export default function OHLCChart({ tickers, default_data }) {
                   >
                     Toggle AccDis
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setv_stoOsc(!v_stoOsc);
+                      // changeNV(v_MACD);
+                    }}
+                  >
+                    Toggle Stochastic Oscillator
+                  </button>
                 </div>
                 <div className="tile is-parent">
                   <PlotlyChart
@@ -513,6 +531,26 @@ export default function OHLCChart({ tickers, default_data }) {
                         type: "line",
                         visible: v_accDis,
                         name: "Accumulation Distribution",
+                      },
+                      {
+                        x: stoOsc.k_Date,
+                        y: stoOsc.k_fast,
+                        xaxis: "x",
+                        yaxis: "y2",
+                        line: { color: "rgba(20,1750,50, 1)" } /*173, 216, 230*/,
+                        type: "line",
+                        visible: v_stoOsc,
+                        name: "Stochastic Oscillator Fast",
+                      },
+                      {
+                        x: stoOsc.d_Date,
+                        y: stoOsc.d_slow,
+                        xaxis: "x",
+                        yaxis: "y2",
+                        line: { color: "rgba(0,0,0, 1)" } /*173, 216, 230*/,
+                        type: "line",
+                        visible: v_stoOsc,
+                        name: "Stochastic Oscillator Slow",
                       },
                     ]}
                     layout={{
