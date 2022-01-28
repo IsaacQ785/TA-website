@@ -6,14 +6,12 @@
 
 
 export function processma(data, days: number) {
-  console.log(data);
   const keys = Object.keys(data);
   let keyval = [];
   for (let key in keys) {
     keyval.push([key,[]]);
   }
   const date_idx = keys.indexOf("Date");
-  console.log(date_idx);
   var tmp_daysma = {} as typeof data;
   var initial_sums = {};
 

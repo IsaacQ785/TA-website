@@ -111,6 +111,5 @@ export function calculateRSI(data: StockData, rsi_period: number) {
   const ma = processma(unwrap(rsi), rsi_period);
   rsi.ma = ma.rsi;
   rsi.ma_dates = ma["Date"];
-  console.log(rsi);
   return rsi;
 }
