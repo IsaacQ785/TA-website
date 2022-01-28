@@ -14,6 +14,7 @@ import { onBalanceVolume } from "../graph functions/onBalanceVolume";
 import { calculateMACD } from "../graph functions/calculateMACD";
 import { calculateADX } from "../graph functions/averageDirectionIndex";
 import { calculateRSI } from "../graph functions/relativeStrengthIndex";
+import { calculateAccDis } from "../graph functions/accumulationDistributionIdx";
 
 const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
 const PlotlyChart = dynamic(() => import("react-plotlyjs-ts"), { ssr: false });
@@ -87,7 +88,11 @@ export default function OHLCChart({ tickers, default_data }) {
     rsi: [],
     ma_dates: [],
     ma: [],
-  })
+  });
+  const [accDis, setaccDis] = useState({
+    Date: [],
+    accDis: [],
+  });
 
   // set visiblity hooks
   const [v_ohlc, setv_ohlc] = useState(true);
@@ -98,6 +103,9 @@ export default function OHLCChart({ tickers, default_data }) {
   const [v_MACD, setv_MACD] = useState(false);
   const [v_ADX, setv_ADX] = useState(false);
   const [v_RSI, setv_RSI] = useState(false);
+  const [v_accDis, setv_accDis] = useState(false);
+
+
   // onLoad, set initial values in the window
   useEffect(() => {
     setClientSide(true);
@@ -109,7 +117,8 @@ export default function OHLCChart({ tickers, default_data }) {
     setMACD(calculateMACD(default_data));
     setADX(calculateADX(default_data,14,14));
     setRSI(calculateRSI(default_data,14));
-    console.log(RSI);
+    setaccDis(calculateAccDis(default_data,14));
+    console.log(accDis);
   }, [clientSide]);
 
   // transform stock data
@@ -201,6 +210,7 @@ export default function OHLCChart({ tickers, default_data }) {
       setMACD(calculateMACD(data_transformed));
       setADX(calculateADX(data_transformed,14,14));
       setRSI(calculateRSI(data_transformed,14));
+      setaccDis(calculateAccDis(data_transformed));
       return setMessage(ticker);
     } else {
       return setError(trace.message);
@@ -372,6 +382,15 @@ export default function OHLCChart({ tickers, default_data }) {
                   >
                     Toggle RSI
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setv_accDis(!v_accDis);
+                      // changeNV(v_MACD);
+                    }}
+                  >
+                    Toggle AccDis
+                  </button>
                 </div>
                 <div className="tile is-parent">
                   <PlotlyChart
@@ -484,6 +503,16 @@ export default function OHLCChart({ tickers, default_data }) {
                         type: "line",
                         visible: v_RSI,
                         name: "RSI ma 14",
+                      },
+                      {
+                        x: accDis.Date,
+                        y: accDis.accDis,
+                        xaxis: "x",
+                        yaxis: "y2",
+                        line: { color: "rgba(100,50,150, 1)" } /*173, 216, 230*/,
+                        type: "line",
+                        visible: v_accDis,
+                        name: "Accumulation Distribution",
                       },
                     ]}
                     layout={{
