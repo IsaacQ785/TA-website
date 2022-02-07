@@ -5,11 +5,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pretest": "eslint --ignore-path .gitignore ."
   },
   "dependencies": {
     "axios": "^0.24.0",
+    "babel-eslint": "^10.1.0",
     "bulma": "^0.9.3",
+    "collections": "^5.1.13",
+    "eslint-config-strongloop": "^2.1.0",
     "mongodb": "^4.3.0",
     "next": "12.0.8",
     "next-connect": "^0.11.0",
@@ -25,9 +29,17 @@
   "devDependencies": {
     "@types/node": "17.0.8",
     "@types/react": "17.0.38",
+    "@typescript-eslint/eslint-plugin": "^5.10.2",
+    "@typescript-eslint/parser": "^5.10.2",
     "bulma": "^0.9.3",
-    "eslint": "8.7.0",
+    "eslint": "^7.32.0",
     "eslint-config-next": "12.0.8",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "eslint-plugin-react": "^7.28.0",
     "typescript": "^4.5.4"
   }
 }

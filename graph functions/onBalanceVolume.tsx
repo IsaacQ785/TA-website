@@ -16,9 +16,7 @@ export function onBalanceVolume(data: StockData) {
     } else {
       pos = 0;
     }
-    onBalVolume.OBV.push(
-      onBalVolume.OBV.at(i - 1) + Number(data.Volume.at(i)) * pos
-    );
+    onBalVolume.OBV.push(onBalVolume.OBV.at(i - 1) + data.Volume.at(i) * pos);
   }
   return onBalVolume;
 }

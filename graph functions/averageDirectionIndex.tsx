@@ -23,17 +23,17 @@ export function calculateADX(data: StockData, dm_period, adx_period) {
   }
 
   for (let i = 1; i <= dm_period; i++) {
-    curr_dm_pos = Number(data.High.at(i)) - Number(data.High.at(i - 1));
-    curr_dm_neg = Number(data.Low.at(i - 1)) - Number(data.Low.at(i));
+    curr_dm_pos = data.High.at(i) - data.High.at(i - 1);
+    curr_dm_neg = data.Low.at(i - 1) - data.Low.at(i);
     if (curr_dm_pos > curr_dm_neg) {
       s_dm_pos += curr_dm_pos;
     } else {
       s_dm_neg += curr_dm_neg;
     }
     atr += Math.max(
-      Number(data.High.at(i)) - Number(data.Low.at(i)),
-      Math.abs(Number(data.High.at(i)) - Number(data.close.at(i - 1))),
-      Math.abs(Number(data.Low.at(i)) - Number(data.close.at(i - 1)))
+      data.High.at(i) - data.Low.at(i),
+      Math.abs(data.High.at(i) - data.close.at(i - 1)),
+      Math.abs(data.Low.at(i) - data.close.at(i - 1))
     );
   }
 
@@ -44,17 +44,17 @@ export function calculateADX(data: StockData, dm_period, adx_period) {
 
   for (let i = dm_period + 1; i < data.close.length; i++) {
     // Calculate current DM+, DM- and aTR for this period
-    curr_dm_pos = Number(data.High.at(i)) - Number(data.High.at(i - 1));
-    curr_dm_neg = Number(data.Low.at(i - 1)) - Number(data.Low.at(i));
+    curr_dm_pos = data.High.at(i) - data.High.at(i - 1);
+    curr_dm_neg = data.Low.at(i - 1) - data.Low.at(i);
     if (curr_dm_pos > curr_dm_neg) {
       curr_dm_neg = 0;
     } else {
       curr_dm_pos = 0;
     }
     curr_tm = Math.max(
-      Number(data.High.at(i)) - Number(data.Low.at(i)),
-      Math.abs(Number(data.High.at(i)) - Number(data.close.at(i - 1))),
-      Math.abs(Number(data.Low.at(i)) - Number(data.close.at(i - 1)))
+      data.High.at(i) - data.Low.at(i),
+      Math.abs(data.High.at(i) - data.close.at(i - 1)),
+      Math.abs(data.Low.at(i) - data.close.at(i - 1))
     );
 
     // calculate current smoothed DM+- and aTR.

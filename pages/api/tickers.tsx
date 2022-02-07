@@ -1,12 +1,11 @@
-const { connectToDatabase } = require("../../lib/mongodb");
-const ObjectId = require("mongodb").ObjectId;
-import dynamic from "next/dynamic";
+const { connectToDatabase } = require('../../lib/mongodb')
+const ObjectId = require('mongodb').ObjectId
 
-export default async function handler(req, res) {
+export default async function handler (req, res) {
   // switch the methods
   switch (req.method) {
-    case "GET": {
-      return getTickers(req, res);
+    case 'GET': {
+      return getTickers(req, res)
     }
 
     // case "POST": {
@@ -23,22 +22,22 @@ export default async function handler(req, res) {
   }
 }
 
-async function getTickers(req, res) {
+async function getTickers (req, res) {
   try {
     // connect to the database
-    let { db } = await connectToDatabase();
+    const { db } = await connectToDatabase()
     // fetch the tickers
-    let stock_data = await db.collection("Stocks_Stored").find().toArray();
+    const tickers = await db.collection('Stocks_Stored').find().toArray()
     // return the posts
     return res.json({
-      message: stock_data,
-      success: true,
-    });
+      message: tickers,
+      success: true
+    })
   } catch (error) {
     // return the error
     return res.json({
       message: new Error(error).message,
-      success: false,
-    });
+      success: false
+    })
   }
 }
