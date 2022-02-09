@@ -1,8 +1,8 @@
-import Link from "next/link";
-import styles from "../styles/Nav.module.scss";
-import Image from "next/image";
+import Link from 'next/link'
+import React from 'react'
+import Image from 'next/image'
 
-export default function Nav() {
+export default function Nav () {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
@@ -53,5 +53,5 @@ export default function Nav() {
         </div>
       </div>
     </nav>
-  );
+  )
 }

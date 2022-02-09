@@ -1,230 +1,231 @@
-import { useEffect, useState } from "react";
-import Nav from "../components/Nav";
-import styles from "../styles/Home.module.scss";
-import dynamic from "next/dynamic";
-import Image from "next/image";
-import Head from "next/head";
+import React, { useEffect, useState } from 'react'
+import Nav from '../components/Nav'
+import styles from '../styles/Home.module.scss'
+import dynamic from 'next/dynamic'
+import Image from 'next/image'
+import Head from 'next/head'
 
-import { processma } from "../graph functions/movingaverage";
+import { processma } from '../graph functions/movingaverage'
 import {
   bollBandData,
-  bollingerBands,
-} from "../graph functions/bollingerBands";
-import { onBalanceVolume } from "../graph functions/onBalanceVolume";
-import { calculateMACD } from "../graph functions/calculateMACD";
-import { calculateADX } from "../graph functions/averageDirectionIndex";
-import { calculateRSI } from "../graph functions/relativeStrengthIndex";
-import { calculateAccDis } from "../graph functions/accumulationDistributionIdx";
-import { calculateStoOsc } from "../graph functions/stochasticOscillator";
+  bollingerBands
+} from '../graph functions/bollingerBands'
+import { onBalanceVolume } from '../graph functions/onBalanceVolume'
+import { calculateMACD } from '../graph functions/calculateMACD'
+import { calculateADX } from '../graph functions/averageDirectionIndex'
+import { calculateRSI } from '../graph functions/relativeStrengthIndex'
+import { calculateAccDis } from '../graph functions/accumulationDistributionIdx'
+import { calculateStoOsc } from '../graph functions/stochasticOscillator'
 
-const Plot = dynamic(() => import("react-plotly.js"), { ssr: false });
-const PlotlyChart = dynamic(() => import("react-plotlyjs-ts"), { ssr: false });
-
+const PlotlyChart = dynamic(() => import('react-plotlyjs-ts'), { ssr: false })
 
 export interface StockData {
   Date: string[];
-  close: string[];
-  Volume: string[];
-  Open: string[];
-  High: string[];
-  Low: string[];
+  close: number[];
+  Volume: number[];
+  Open: number[];
+  High: number[];
+  Low: number[];
 }
 
-export default function OHLCChart({ tickers, default_data }) {
+function unpack (rows, key) {
+  return rows.map(function (row) {
+    if (key === 'Date') {
+      return row[key]
+    }
+    return key !== "Stock-ticker" ? Number(row[key].replace(",","")) : row[key];
+  })
+}
+
+export default function OHLCChart ({ tickers, defaultData }) {
   // initialise key variables
-  const [ticker, setTicker] = useState("");
-  const [viewed_ticker, set_viewed_ticker] = useState("AAPL");
-  const [t1, sett1] = useState("");
-  const [valid_tickers, set_valid_tickers] = useState(tickers);
-  const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
-  const [clientSide, setClientSide] = useState(false);
-  const [num_visible, setnum_visible] = useState(Infinity);
+  const [ticker, setTicker] = useState('')
+  const [viewedTicker, setViewedTicker] = useState('AAPL')
+  const [validTickers, setValidTickers] = useState(tickers)
+  const [error, setError] = useState('')
+  const [message, setMessage] = useState('')
+  const [clientSide, setClientSide] = useState(false)
+  const [numVisible, setNumVisible] = useState(Infinity)
 
   // initialize plotting variables
-  const [s_data, setData] = useState<StockData>({
-    Date: ["01/01/2021"],
+  const [currData, setData] = useState<StockData>({
+    Date: ['01/01/2021'],
     close: [],
     Volume: [],
     Open: [],
     High: [],
-    Low: [],
-  });
+    Low: []
+  })
   const [ma50, setma50] = useState({
     Date: [],
     close: [],
     Volume: [],
     Open: [],
     High: [],
-    Low: [],
-  });
+    Low: []
+  })
   const [ma200, setma200] = useState({
     Date: [],
     close: [],
     Volume: [],
     Open: [],
     High: [],
-    Low: [],
-  });
+    Low: []
+  })
   const [bollBands, setBB] = useState<bollBandData>({
     Date: [],
     extremes: [],
     middle: [],
-    extreme_dates: [],
-  });
+    extreme_dates: []
+  })
   const [OBV, setOBV] = useState({
     date: [],
-    OBV: [],
-  });
+    OBV: []
+  })
   const [MACD, setMACD] = useState({
     date: [],
-    macd: [],
-  });
+    macd: []
+  })
   const [ADX, setADX] = useState({
     Date: [],
-    adx: [],
-  });
+    adx: []
+  })
   const [RSI, setRSI] = useState({
     Date: [],
     rsi: [],
     ma_dates: [],
-    ma: [],
-  });
+    ma: []
+  })
   const [accDis, setaccDis] = useState({
     Date: [],
-    accDis: [],
-  });
+    accDis: []
+  })
   const [stoOsc, setstoOsc] = useState({
     k_Date: [],
     k_fast: [],
     d_Date: [],
-    d_slow: [],
-  });
+    d_slow: []
+  })
 
   // set visiblity hooks
-  const [v_ohlc, setv_ohlc] = useState(true);
-  const [v_50ma, setv_ma50] = useState(false);
-  const [v_200ma, setv_ma200] = useState(false);
-  const [v_BB, setv_BB] = useState(false);
-  const [v_OBV, setv_OBV] = useState(false);
-  const [v_MACD, setv_MACD] = useState(false);
-  const [v_ADX, setv_ADX] = useState(false);
-  const [v_RSI, setv_RSI] = useState(false);
-  const [v_accDis, setv_accDis] = useState(false);
-  const [v_stoOsc, setv_stoOsc] = useState(false);
-
+  const [vOHLC, setvOHLC] = useState(true)
+  const [v50ma, setv50ma] = useState(false)
+  const [v200ma, setv200ma] = useState(false)
+  const [vBB, setvBB] = useState(false)
+  const [vOBV, setvOBV] = useState(false)
+  const [vMACD, setvMACD] = useState(false)
+  const [vADX, setvADX] = useState(false)
+  const [vRSI, setvRSI] = useState(false)
+  const [vaccDis, setvaccDis] = useState(false)
+  const [vstoOsc, setvstoOsc] = useState(false)
 
   // onLoad, set initial values in the window
   useEffect(() => {
-    setClientSide(true);
-    setData(default_data);
-    setma50(processma(default_data, 50));
-    setma200(processma(default_data, 200));
-    setBB(bollingerBands(default_data));
-    setOBV(onBalanceVolume(default_data));
-    setMACD(calculateMACD(default_data));
-    setADX(calculateADX(default_data,14,14));
-    setRSI(calculateRSI(default_data,14));
-    setaccDis(calculateAccDis(default_data));
-    setstoOsc(calculateStoOsc(default_data,14,3));
-  }, [clientSide]);
+    setClientSide(true)
+    setData(defaultData)
+    setma50(processma(defaultData, 50))
+    setma200(processma(defaultData, 200))
+    setBB(bollingerBands(defaultData))
+    setOBV(onBalanceVolume(defaultData))
+    setMACD(calculateMACD(defaultData))
+    setADX(calculateADX(defaultData, 14, 14))
+    setRSI(calculateRSI(defaultData, 14))
+    setaccDis(calculateAccDis(defaultData))
+    setstoOsc(calculateStoOsc(defaultData, 14, 3))
+  }, [clientSide])
 
   // transform stock data
-  function unpack(rows, key) {
-    return rows.map(function (row) {
-      return row[key];//key=="Date" ? new Date(row[key]) : Number(row[key]);
-    });
-  }
 
   /// Doesnt work - use to set ## of subplots for MACD, Vol, etc.
 
   // function changeNV(toggled) {
-  //   console.log(num_visible)
-  //   if (num_visible===Infinity) {
-  //     setnum_visible(1);
+  //   console.log(numVisible)
+  //   if (numVisible===Infinity) {
+  //     setNumVisible(1);
   //     return;
   //   }
   //   const pos = toggled ?  1: -1;
-  //   const nv = num_visible + pos;
+  //   const nv = numVisible + pos;
   //   if (nv===0) {
-  //     setnum_visible(Infinity);
+  //     setNumVisible(Infinity);
   //     return;
   //   }
   //   else {
-  //     setnum_visible(num_visible+pos);
+  //     setNumVisible(numVisible+pos);
   //     return;
   //   }
   // }
   // update tickers in dropdown list
-  function filterTickers() {
-    const search_term = ticker.toLowerCase();
-    set_valid_tickers(
+  function filterTickers () {
+    const searchTerm = ticker.toLowerCase()
+    console.log(validTickers);
+    setValidTickers(
       tickers.filter(function (t) {
-        if (t.toLowerCase().indexOf(search_term) > -1) {
-          return true;
+        if (t.toLowerCase().indexOf(searchTerm) > -1) {
+          return true
         } else {
-          return false;
+          return false
         }
       })
-    );
+    )
   }
 
   // check for enter key press
-  function clickPress(e) {
+  function clickPress (e) {
     if (e.keyCode === 13) {
-      handleRequest(e);
+      handleRequest(e)
     }
   }
 
   // change ticker onClick of dropdown item
-  function handleClick(tick) {
+  function handleClick (tick) {
     return () => {
-      setTicker(tick || ticker);
-    };
+      setTicker(tick || ticker)
+    }
   }
 
   // handle Request for information
   const handleRequest = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
+    e.preventDefault()
     // reset error and message
-    setError("");
-    setMessage("");
+    setError('')
+    setMessage('')
 
     // fields check
-    if (!ticker) return setError("All fields are required");
+    if (!ticker) return setError('All fields are required')
 
-    let response = await fetch("/api/stock_data?" + ticker, {
-      method: "GET",
-    });
+    const response = await fetch('/api/stock_data?' + ticker, {
+      method: 'GET'
+    })
 
-    let trace = await response.json();
+    const trace = await response.json()
 
     if (trace.success) {
-      set_viewed_ticker(ticker);
-      setTicker("");
-      const data_transformed: StockData = {
-        Date: unpack(trace.message, "Date").reverse(),
-        close: unpack(trace.message, "Close/Last").reverse(),
-        Volume: unpack(trace.message, "Volume").reverse(),
-        Open: unpack(trace.message, "Open").reverse(),
-        High: unpack(trace.message, "High").reverse(),
-        Low: unpack(trace.message, "Low").reverse(),
-      };
-      setData(data_transformed);
-      setma50(processma(data_transformed, 50));
-      setma200(processma(data_transformed, 200));
-      setBB(bollingerBands(data_transformed));
-      setOBV(onBalanceVolume(data_transformed));
-      setMACD(calculateMACD(data_transformed));
-      setADX(calculateADX(data_transformed,14,14));
-      setRSI(calculateRSI(data_transformed,14));
-      setaccDis(calculateAccDis(data_transformed));
-      setstoOsc(calculateStoOsc(data_transformed,14,3));
-      return setMessage(ticker);
+      setViewedTicker(ticker)
+      setTicker('')
+      const dataTransformed: StockData = {
+        Date: unpack(trace.message, 'Date').reverse(),
+        close: unpack(trace.message, 'Close/Last').reverse(),
+        Volume: unpack(trace.message, 'Volume').reverse(),
+        Open: unpack(trace.message, 'Open').reverse(),
+        High: unpack(trace.message, 'High').reverse(),
+        Low: unpack(trace.message, 'Low').reverse()
+      }
+      setData(dataTransformed)
+      setma50(processma(dataTransformed, 50))
+      setma200(processma(dataTransformed, 200))
+      setBB(bollingerBands(dataTransformed))
+      setOBV(onBalanceVolume(dataTransformed))
+      setMACD(calculateMACD(dataTransformed))
+      setADX(calculateADX(dataTransformed, 14, 14))
+      setRSI(calculateRSI(dataTransformed, 14))
+      setaccDis(calculateAccDis(dataTransformed))
+      setstoOsc(calculateStoOsc(dataTransformed, 14, 3))
+      return setMessage(ticker)
     } else {
-      return setError(trace.message);
+      return setError(trace.message)
     }
-  };
+  }
 
   return (
     <div>
@@ -241,21 +242,25 @@ export default function OHLCChart({ tickers, default_data }) {
           <div className="container">
             <form
               onKeyPress={(e) => {
-                clickPress(e);
+                clickPress(e)
               }}
               onSubmit={handleRequest}
               className={styles.form}
             >
-              {error ? (
+              {error
+                ? (
                 <div className={styles.formItem}>
                   <h3 className={styles.error}>{error}</h3>
                 </div>
-              ) : null}
-              {viewed_ticker ? (
+                  )
+                : null}
+              {viewedTicker
+                ? (
                 <div className={styles.formItem}>
-                  <h3 className={styles.message}>{viewed_ticker}</h3>
+                  <h3 className={styles.message}>{viewedTicker}</h3>
                 </div>
-              ) : null}
+                  )
+                : null}
               <div className="dropdown is-active">
                 <div className="dropdown-trigger">
                   <input
@@ -263,10 +268,10 @@ export default function OHLCChart({ tickers, default_data }) {
                     type="text"
                     name="title"
                     onChange={(e) => {
-                      setTicker(e.target.value);
+                      setTicker(e.target.value)
                     }}
                     onKeyUp={() => {
-                      filterTickers();
+                      filterTickers()
                     }}
                     value={ticker}
                     placeholder="AAPL"
@@ -282,29 +287,29 @@ export default function OHLCChart({ tickers, default_data }) {
                     <a
                       href="#"
                       className="dropdown-item"
-                      onClick={handleClick(valid_tickers[0])}
+                      onClick={handleClick(validTickers[0])}
                     >
-                      {valid_tickers[0] || ""}
+                      {validTickers[0] || ''}
                     </a>
                     <a
                       className="dropdown-item"
-                      onClick={handleClick(valid_tickers[1])}
+                      onClick={handleClick(validTickers[1])}
                     >
-                      {valid_tickers[1] || ""}
-                    </a>
-                    <a
-                      href="#"
-                      className="dropdown-item"
-                      onClick={handleClick(valid_tickers[2])}
-                    >
-                      {valid_tickers[2] || ""}
+                      {validTickers[1] || ''}
                     </a>
                     <a
                       href="#"
                       className="dropdown-item"
-                      onClick={handleClick(valid_tickers[3])}
+                      onClick={handleClick(validTickers[2])}
                     >
-                      {valid_tickers[3] || ""}
+                      {validTickers[2] || ''}
+                    </a>
+                    <a
+                      href="#"
+                      className="dropdown-item"
+                      onClick={handleClick(validTickers[3])}
+                    >
+                      {validTickers[3] || ''}
                     </a>
                   </div>
                 </div>
@@ -323,16 +328,16 @@ export default function OHLCChart({ tickers, default_data }) {
                   <button
                     type="button"
                     onClick={() => {
-                      setv_ohlc(!v_ohlc);
+                      setvOHLC(!vOHLC)
                     }}
                   >
-                    Toggle {viewed_ticker}
+                    Toggle {viewedTicker}
                   </button>
                   <button
                     type="button"
                     onClick={() => {
-                      setv_ma50(!v_50ma);
-                      // changeNV(v_50ma);
+                      setv50ma(!v50ma)
+                      // changeNV(v50ma);
                     }}
                   >
                     Toggle 50-day-MA
@@ -340,8 +345,8 @@ export default function OHLCChart({ tickers, default_data }) {
                   <button
                     type="button"
                     onClick={() => {
-                      setv_ma200(!v_200ma);
-                      // changeNV(v_200ma);
+                      setv200ma(!v200ma)
+                      // changeNV(v200ma);
                     }}
                   >
                     Toggle 200-day-MA
@@ -349,8 +354,8 @@ export default function OHLCChart({ tickers, default_data }) {
                   <button
                     type="button"
                     onClick={() => {
-                      setv_BB(!v_BB);
-                      // changeNV(v_BB);
+                      setvBB(!vBB)
+                      // changeNV(vBB);
                     }}
                   >
                     Toggle Bollinger Bands
@@ -358,8 +363,8 @@ export default function OHLCChart({ tickers, default_data }) {
                   <button
                     type="button"
                     onClick={() => {
-                      setv_OBV(!v_OBV);
-                      // changeNV(v_OBV);
+                      setvOBV(!vOBV)
+                      // changeNV(vOBV);
                     }}
                   >
                     Toggle On Balance Volume
@@ -367,8 +372,8 @@ export default function OHLCChart({ tickers, default_data }) {
                   <button
                     type="button"
                     onClick={() => {
-                      setv_MACD(!v_MACD);
-                      // changeNV(v_MACD);
+                      setvMACD(!vMACD)
+                      // changeNV(vMACD);
                     }}
                   >
                     Toggle MACD
@@ -376,8 +381,8 @@ export default function OHLCChart({ tickers, default_data }) {
                   <button
                     type="button"
                     onClick={() => {
-                      setv_ADX(!v_ADX);
-                      // changeNV(v_MACD);
+                      setvADX(!vADX)
+                      // changeNV(vMACD);
                     }}
                   >
                     Toggle ADX
@@ -385,8 +390,8 @@ export default function OHLCChart({ tickers, default_data }) {
                   <button
                     type="button"
                     onClick={() => {
-                      setv_RSI(!v_RSI);
-                      // changeNV(v_MACD);
+                      setvRSI(!vRSI)
+                      // changeNV(vMACD);
                     }}
                   >
                     Toggle RSI
@@ -394,8 +399,8 @@ export default function OHLCChart({ tickers, default_data }) {
                   <button
                     type="button"
                     onClick={() => {
-                      setv_accDis(!v_accDis);
-                      // changeNV(v_MACD);
+                      setvaccDis(!vaccDis)
+                      // changeNV(vMACD);
                     }}
                   >
                     Toggle AccDis
@@ -403,8 +408,8 @@ export default function OHLCChart({ tickers, default_data }) {
                   <button
                     type="button"
                     onClick={() => {
-                      setv_stoOsc(!v_stoOsc);
-                      // changeNV(v_MACD);
+                      setvstoOsc(!vstoOsc)
+                      // changeNV(vMACD);
                     }}
                   >
                     Toggle Stochastic Oscillator
@@ -414,173 +419,185 @@ export default function OHLCChart({ tickers, default_data }) {
                   <PlotlyChart
                     data={[
                       {
-                        x: s_data.Date,
-                        close: s_data.close,
-                        high: s_data.High,
-                        low: s_data.Low,
-                        open: s_data.Open,
+                        x: currData.Date,
+                        close: currData.close,
+                        high: currData.High,
+                        low: currData.Low,
+                        open: currData.Open,
 
-                        increasing: { line: { color: "green" } },
-                        decreasing: { line: { color: "red" } },
-                        visible: v_ohlc,
-                        name: "AAPL D",
+                        increasing: { line: { color: 'green' } },
+                        decreasing: { line: { color: 'red' } },
+                        visible: vOHLC,
+                        name: 'AAPL D',
 
-                        type: "candlestick",
-                        xaxis: "x",
-                        yaxis: "y",
+                        type: 'candlestick',
+                        xaxis: 'x',
+                        yaxis: 'y'
                       },
                       {
                         x: ma50.Date,
                         y: ma50.close,
-                        type: "line",
-                        xaxis: "x",
-                        yaxis: "y",
-                        visible: v_50ma,
-                        marker: { color: "orange" },
-                        name: "50MA",
+                        type: 'line',
+                        xaxis: 'x',
+                        yaxis: 'y',
+                        visible: v50ma,
+                        marker: { color: 'orange' },
+                        name: '50MA'
                       },
                       {
                         x: ma200.Date,
                         y: ma200.close,
-                        type: "line",
-                        xaxis: "x",
-                        yaxis: "y",
-                        visible: v_200ma,
-                        marker: { color: "yellow" },
-                        name: "200MA",
+                        type: 'line',
+                        xaxis: 'x',
+                        yaxis: 'y',
+                        visible: v200ma,
+                        marker: { color: 'yellow' },
+                        name: '200MA'
                       },
                       {
                         x: bollBands.Date,
                         y: bollBands.middle,
-                        type: "line",
-                        xaxis: "x",
-                        yaxis: "y",
-                        marker: { color: "orange" },
-                        line: { color: "rgba(0,0,200, 0.3)" },
-                        visible: v_BB,
-                        name: "Bollinger Bands",
+                        type: 'line',
+                        xaxis: 'x',
+                        yaxis: 'y',
+                        marker: { color: 'orange' },
+                        line: { color: 'rgba(0,0,200, 0.3)' },
+                        visible: vBB,
+                        name: 'Bollinger Bands'
                       },
                       {
                         x: bollBands.extreme_dates,
                         y: bollBands.extremes,
-                        fill: "tozeroy",
-                        xaxis: "x",
-                        yaxis: "y",
-                        fillcolor: "rgba(0,176,246,0.2)",
-                        line: { color: "rgba(0,0,200, 0.3)" } /*173, 216, 230*/,
-                        type: "line",
-                        visible: v_BB,
-                        name: "Bollinger Bands",
+                        fill: 'tozeroy',
+                        xaxis: 'x',
+                        yaxis: 'y',
+                        fillcolor: 'rgba(0,176,246,0.2)',
+                        line: { color: 'rgba(0,0,200, 0.3)' } /* 173, 216, 230 */,
+                        type: 'line',
+                        visible: vBB,
+                        name: 'Bollinger Bands'
                       },
                       {
                         x: OBV.date,
                         y: OBV.OBV,
-                        xaxis: "x",
-                        yaxis: "y2",
-                        line: { color: "rgba(0,0,200, 1)" } /*173, 216, 230*/,
-                        type: "line",
-                        visible: v_OBV,
-                        name: "On Balance Volume",
+                        xaxis: 'x',
+                        yaxis: 'y2',
+                        line: { color: 'rgba(0,0,200, 1)' } /* 173, 216, 230 */,
+                        type: 'line',
+                        visible: vOBV,
+                        name: 'On Balance Volume'
                       },
                       {
                         x: MACD.date,
                         y: MACD.macd,
-                        xaxis: "x",
-                        yaxis: "y2",
-                        line: { color: "rgba(0,200,200, 1)" } /*173, 216, 230*/,
-                        type: "line",
-                        visible: v_MACD,
-                        name: "MACD",
+                        xaxis: 'x',
+                        yaxis: 'y2',
+                        line: { color: 'rgba(0,200,200, 1)' } /* 173, 216, 230 */,
+                        type: 'line',
+                        visible: vMACD,
+                        name: 'MACD'
                       },
                       {
                         x: ADX.Date,
                         y: ADX.adx,
-                        xaxis: "x",
-                        yaxis: "y2",
-                        line: { color: "rgba(200,200,200, 1)" } /*173, 216, 230*/,
-                        type: "line",
-                        visible: v_ADX,
-                        name: "ADX",
+                        xaxis: 'x',
+                        yaxis: 'y2',
+                        line: {
+                          color: 'rgba(200,200,200, 1)'
+                        } /* 173, 216, 230 */,
+                        type: 'line',
+                        visible: vADX,
+                        name: 'ADX'
                       },
                       {
                         x: RSI.Date,
                         y: RSI.rsi,
-                        xaxis: "x",
-                        yaxis: "y2",
-                        line: { color: "rgba(200,0,100, 1)" } /*173, 216, 230*/,
-                        type: "line",
-                        visible: v_RSI,
-                        name: "RSI",
+                        xaxis: 'x',
+                        yaxis: 'y2',
+                        line: { color: 'rgba(200,0,100, 1)' } /* 173, 216, 230 */,
+                        type: 'line',
+                        visible: vRSI,
+                        name: 'RSI'
                       },
                       {
                         x: RSI.ma_dates,
                         y: RSI.ma,
-                        xaxis: "x",
-                        yaxis: "y2",
-                        line: { color: "rgba(100,50,150, 1)" } /*173, 216, 230*/,
-                        type: "line",
-                        visible: v_RSI,
-                        name: "RSI ma 14",
+                        xaxis: 'x',
+                        yaxis: 'y2',
+                        line: {
+                          color: 'rgba(100,50,150, 1)'
+                        } /* 173, 216, 230 */,
+                        type: 'line',
+                        visible: vRSI,
+                        name: 'RSI ma 14'
                       },
                       {
                         x: accDis.Date,
                         y: accDis.accDis,
-                        xaxis: "x",
-                        yaxis: "y2",
-                        line: { color: "rgba(100,50,150, 1)" } /*173, 216, 230*/,
-                        type: "line",
-                        visible: v_accDis,
-                        name: "Accumulation Distribution",
+                        xaxis: 'x',
+                        yaxis: 'y2',
+                        line: {
+                          color: 'rgba(100,50,150, 1)'
+                        } /* 173, 216, 230 */,
+                        type: 'line',
+                        visible: vaccDis,
+                        name: 'Accumulation Distribution'
                       },
                       {
                         x: stoOsc.k_Date,
                         y: stoOsc.k_fast,
-                        xaxis: "x",
-                        yaxis: "y2",
-                        line: { color: "rgba(20,1750,50, 1)" } /*173, 216, 230*/,
-                        type: "line",
-                        visible: v_stoOsc,
-                        name: "Stochastic Oscillator Fast",
+                        xaxis: 'x',
+                        yaxis: 'y2',
+                        line: {
+                          color: 'rgba(20,1750,50, 1)'
+                        } /* 173, 216, 230 */,
+                        type: 'line',
+                        visible: vstoOsc,
+                        name: 'Stochastic Oscillator Fast'
                       },
                       {
                         x: stoOsc.d_Date,
                         y: stoOsc.d_slow,
-                        xaxis: "x",
-                        yaxis: "y2",
-                        line: { color: "rgba(0,0,0, 1)" } /*173, 216, 230*/,
-                        type: "line",
-                        visible: v_stoOsc,
-                        name: "Stochastic Oscillator Slow",
-                      },
+                        xaxis: 'x',
+                        yaxis: 'y2',
+                        line: { color: 'rgba(0,0,0, 1)' } /* 173, 216, 230 */,
+                        type: 'line',
+                        visible: vstoOsc,
+                        name: 'Stochastic Oscillator Slow'
+                      }
                     ]}
                     layout={{
-                      title: viewed_ticker,
+                      // onClick:{console.log("eee")},
+                      barmode: 'stack',
+                      uirevision: 'true',
+                      title: viewedTicker,
                       width: clientSide ? window.screen.availWidth * 0.8 : 2000,
                       height: clientSide
                         ? window.screen.availHeight * 0.75
                         : 1300,
-                      dragmode: "zoom",
+                      dragmode: 'zoom',
                       showlegend: true,
                       xaxis: {
                         domain: [0, 1],
-                        anchor: "y2",
+                        anchor: 'y2'
                       },
                       yaxis: {
                         domain: [0.25, 1],
                         fixedrange: false,
-                        anchor: "x",
+                        anchor: 'x'
                       },
                       xaxis2: {
+                        range: clientSide ? currData.Date : [],
                         domain: [0, 1],
                         rangeslider: {
-                          visible: true,
+                          visible: true
                         },
-                        anchor: "y",
+                        anchor: 'y'
                       },
                       yaxis2: {
                         domain: [0, 0.25],
                         fixedrange: false,
-                        anchor: "x",
+                        anchor: 'x'
                       },
                       // To be added + more for multiple subplots for MACD, Vol etc.
                       // xaxis3: {
@@ -591,13 +608,116 @@ export default function OHLCChart({ tickers, default_data }) {
                       //   anchor: "y3",
                       // },
                       // yaxis3: {
-                      //   domain: [0.25*(1/num_visible),Math.min(0.25,0.25*(2/num_visible))],
+                      //   domain: [0.25*(1/numVisible),Math.min(0.25,0.25*(2/numVisible))],
                       //   fixedrange: false,
                       //   anchor: "x2",
                       // },
                       modebar: {
-                        add: ["drawline", "eraseshape"],
+                        add: ['drawline', 'eraseshape']
                       },
+                      shapes: [
+                        // // 1st highlight during Feb 4 - Feb 6
+                        // {
+                        //   type: 'rect',
+                        //   // x-reference is assigned to the x-values
+                        //   xref: 'x',
+                        //   // y-reference is assigned to the plot paper [0,1]
+                        //   yref: 'y',
+                        //   x0: currData.Date.at(-1), // currData.Date.at(-1), //'01/01/2021',
+                        //   y0: currData.High.at(currData.Date.indexOf('01/04/2022')),
+                        //   x1: currData.Date.at(0), // "01/01/2024",
+                        //   y1: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.318 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
+                        //   fillcolor: 'red',
+                        //   opacity: 0.35,
+                        //   line: {
+                        //     width: 3
+                        //   },
+                        //   editable: true
+                        // },
+                        // {
+                        //   type: 'rect',
+                        //   // x-reference is assigned to the x-values
+                        //   xref: 'x',
+                        //   // y-reference is assigned to the plot paper [0,1]
+                        //   yref: 'y',
+                        //   x0: currData.Date.at(-1), // currData.Date.at(-1), //'01/01/2021',
+                        //   y0: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.318 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
+                        //   x1: currData.Date.at(0), // "01/01/2024",
+                        //   y1: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.5 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
+                        //   fillcolor: 'orange',
+                        //   opacity: 0.35,
+                        //   line: {
+                        //     width: 3
+                        //   },
+                        //   editable: true
+                        // },
+                        // {
+                        //   type: 'rect',
+                        //   // x-reference is assigned to the x-values
+                        //   xref: 'x',
+                        //   // y-reference is assigned to the plot paper [0,1]
+                        //   yref: 'y',
+                        //   x0: currData.Date.at(-1), // currData.Date.at(-1), //'01/01/2021',
+                        //   y0: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.5 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
+                        //   x1: currData.Date.at(0), // "01/01/2024",
+                        //   y1: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.76 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
+                        //   fillcolor: 'yellow',
+                        //   opacity: 0.35,
+                        //   line: {
+                        //     width: 3
+                        //   },
+                        //   editable: true
+                        // },
+                        // {
+                        //   type: 'rect',
+                        //   // x-reference is assigned to the x-values
+                        //   xref: 'x',
+                        //   // y-reference is assigned to the plot paper [0,1]
+                        //   yref: 'y',
+                        //   x0: currData.Date.at(-1), // currData.Date.at(-1), //'01/01/2021',
+                        //   y0: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.76 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
+                        //   x1: currData.Date.at(0), // "01/01/2024",
+                        //   y1: currData.Low.at(currData.Date.indexOf('10/04/2021')),
+                        //   fillcolor: 'green',
+                        //   opacity: 0.35,
+                        //   line: {
+                        //     width: 3
+                        //   },
+                        //   editable: true
+                        // }
+                        // // {
+                        // //   editable: "true",
+                        // //   type: "path",
+                        // //   line: { color: "yellow", width: 3 },
+                        // //   fillcolor:"blue",
+                        // //   path: `M ${currData.Date.at(-200)},${currData.High.at(-5)} L ${currData.Date.at(0)},${currData.High.at(-5)}`,
+
+                        // // },
+                        // // {
+                        // //   editable: "true",
+                        // //   type: "path",
+                        // //   line: { color: "orange", width: 3 },
+                        // //   fillcolor:"blue",
+                        // //   path: `M ${currData.Date.at(-200)},${currData.High.at(-3)} L ${currData.Date.at(0)},${currData.High.at(-3)}`,
+
+                        // // },
+                        // // {
+                        // //   editable: "true",
+                        // //   type: "path",
+                        // //   line: { color: "red", width: 3 },
+                        // //   fillcolor:"blue",
+                        // //   path: `M ${currData.Date.at(-200)},${currData.High.at(-2)} L ${currData.Date.at(0)},${currData.High.at(-2)} S red`,
+
+                        // // },
+                        // // {
+                        // //   editable: "true",
+                        // //   type: "path",
+                        // //   line: { color: "green", width: 3 },
+                        // //   fillcolor:"blue",
+                        // //   path: `M ${currData.Date.at(-200)},${currData.High.at(-1)} L ${currData.Date.at(0)},${currData.High.at(-1)} `,
+
+                        // // },
+                      ]
                     }}
                   />
                 </div>
@@ -623,53 +743,45 @@ export default function OHLCChart({ tickers, default_data }) {
         </div>
       </main>
     </div>
-  );
+  )
 }
 
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps (ctx) {
   // get the current environment
-  let dev = process.env.NODE_ENV !== "production";
-  let { DEV_URL, PROD_URL } = process.env;
+  const dev = process.env.NODE_ENV !== 'production'
+  const { DEV_URL, PROD_URL } = process.env
 
   // request tickers from api
-  let response_tickers = await fetch(`${dev ? DEV_URL : PROD_URL}/api/tickers`);
+  const responseTickers = await fetch(`${dev ? DEV_URL : PROD_URL}/api/tickers`)
   // extract the data
-  let tickers_data = await response_tickers.json();
+  const tickercurrData = await responseTickers.json()
 
-  //fetch default ticker data == "AAPL"
+  // fetch default ticker data == "AAPL"
 
-  let response_ticker_data = await fetch(
-    `${dev ? DEV_URL : PROD_URL}/api/stock_data` + "?AAPL",
+  const responseTickerData = await fetch(
+    `${dev ? DEV_URL : PROD_URL}/api/stock_data` + '?AAPL',
     {
-      method: "GET",
+      method: 'GET'
     }
-  );
+  )
 
-  let ticker_data = await response_ticker_data.json();
+  const tickerData = await responseTickerData.json()
 
-  function unpack(rows, key) {
-    return rows.map(function (row) {
-      return row[key];
-    });
+  const tickers = unpack(tickercurrData.message, 'Stock-ticker').sort()
+
+  const defaultTickerData = {
+    Date: unpack(tickerData.message, 'Date').reverse(),
+    close: unpack(tickerData.message, 'Close/Last').reverse(),
+    Volume: unpack(tickerData.message, 'Volume').reverse(),
+    Open: unpack(tickerData.message, 'Open').reverse(),
+    High: unpack(tickerData.message, 'High').reverse(),
+    Low: unpack(tickerData.message, 'Low').reverse()
   }
-
-  const tickers = unpack(tickers_data.message, "Stock-ticker").sort();
-
-  const default_ticker_data = {
-    Date: unpack(ticker_data.message, "Date").reverse(),
-    close: unpack(ticker_data.message, "Close/Last").reverse(),
-    Volume: unpack(ticker_data.message, "Volume").reverse(),
-    Open: unpack(ticker_data.message, "Open").reverse(),
-    High: unpack(ticker_data.message, "High").reverse(),
-    Low: unpack(ticker_data.message, "Low").reverse(),
-  };
 
   return {
     props: {
       tickers: tickers,
-      default_data: default_ticker_data,
-    },
-  };
+      defaultData: defaultTickerData,
+    }
+  }
 }
-
-

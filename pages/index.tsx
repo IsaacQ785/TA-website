@@ -1,11 +1,8 @@
-import Head from "next/head";
+import Head from 'next/head'
+import React from 'react'
+import Nav from '../components/Nav'
 
-import Nav from "../components/Nav";
-import OHLCChart from "./chart";
-import styles from "../styles/Home.module.scss";
-import Ticker from "../components/StockTicker";
-
-export default function Home({ tickers }) {
+export default function Home ({ tickers }) {
   return (
     <div>
       <Head>
@@ -17,30 +14,30 @@ export default function Home({ tickers }) {
       <main>
       </main>
     </div>
-  );
+  )
 }
 
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps (ctx) {
   // get the current environment
-  let dev = process.env.NODE_ENV !== "production";
-  let { DEV_URL, PROD_URL } = process.env;
+  const dev = process.env.NODE_ENV !== 'production'
+  const { DEV_URL, PROD_URL } = process.env
 
   // request posts from api
-  let response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/tickers`);
+  const response = await fetch(`${dev ? DEV_URL : PROD_URL}/api/tickers`)
   // extract the data
-  let data = await response.json();
+  const data = await response.json()
 
-  function unpack(rows, key) {
+  function unpack (rows, key) {
     return rows.map(function (row) {
-      return row[key];
-    });
+      return row[key]
+    })
   }
 
-  const tickers = unpack(data.message, "Stock-ticker").sort();
+  const tickers = unpack(data.message, 'Stock-ticker').sort()
 
   return {
     props: {
-      tickers: tickers,
-    },
-  };
+      tickers: tickers
+    }
+  }
 }

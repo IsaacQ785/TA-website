@@ -26,14 +26,14 @@ export function bollingerBands(data: StockData) {
   return bollBand;
 }
 const ma_length = 20;
-const calculateMeans = (closes: any[]): number[] => {
+const calculateMeans = (closes: number[]): number[] => {
   var means = [];
   for (var j = 0; j < closes.length - ma_length; j++) {
     means.push(0);
   }
   for (var i = 0; i < ma_length; i++) {
     for (var j = 0; j < closes.length - ma_length; j++) {
-      means[j] += Number(closes[i + j]) / ma_length;
+      means[j] += closes[i + j] / ma_length;
     }
   }
   return means;
@@ -48,12 +48,12 @@ const calculateMean = (closes: number[]): number => {
 };
 
 // Calculate variance
-const calculateVariances = (closes: string[], means: number[]): number[] => {
+const calculateVariances = (closes: number[], means: number[]): number[] => {
   var variances = [];
   for (var j = 0; j < means.length; j++) {
     var squareDiffs;
     squareDiffs = closes.slice(j, j + ma_length).map((value) => {
-      const diff = Number(value) - means[j];
+      const diff = value - means[j];
       return diff * diff;
     });
     variances.push(calculateMean(squareDiffs));
@@ -61,13 +61,13 @@ const calculateVariances = (closes: string[], means: number[]): number[] => {
   return variances;
 };
 
-const calculateBollSD = (closes: string[], means: number[]) => {
+const calculateBollSD = (closes: number[], means: number[]) => {
   return calculateVariances(closes, means).map((value) => {
     return 2 * Math.sqrt(value);
   });
 };
 
-function calculateBands(close: string[], Dates: string[]) {
+function calculateBands(close: number[], Dates: string[]) {
   const means = calculateMeans(close);
   const boll_devs = calculateBollSD(close, means);
   var top = [];

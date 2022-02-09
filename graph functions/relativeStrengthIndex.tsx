@@ -23,9 +23,7 @@ export function calculateRSI(data: StockData, rsi_period: number) {
 
   // sum to initial RSI
   for (let i = 1; i <= rsi_period; i++) {
-    p_change =
-      (Number(data.close.at(i)) - Number(data.close.at(i - 1))) /
-      Number(data.close.at(i - 1));
+    p_change = (data.close.at(i) - data.close.at(i - 1)) / data.close.at(i - 1);
     // num_higher += p_change >= 0 ? 1 : 0;
     // num_lower += p_change < 0 ? 1 : 0;
     total_perc_higher += Math.max(0, p_change);
@@ -48,13 +46,10 @@ export function calculateRSI(data: StockData, rsi_period: number) {
 
   // now iterate through rest of data for rsi
   for (let i = rsi_period + 1; i < data.close.length; i++) {
-    p_change =
-      (Number(data.close.at(i)) - Number(data.close.at(i - 1))) /
-      Number(data.close.at(i - 1));
+    p_change = (data.close.at(i) - data.close.at(i - 1)) / data.close.at(i - 1);
     old_p_change =
-      (Number(data.close.at(i - rsi_period)) -
-        Number(data.close.at(i - 1 - rsi_period))) /
-      Number(data.close.at(i - 1 - rsi_period));
+      (data.close.at(i - rsi_period) - data.close.at(i - 1 - rsi_period)) /
+      data.close.at(i - 1 - rsi_period);
     c_higher = Math.max(0, p_change);
     c_lower = Math.min(0, p_change);
     old_c_higher = Math.max(0, old_p_change);

@@ -1,13 +1,12 @@
-const { connectToDatabase } = require('../../lib/mongodb');
-const ObjectId = require('mongodb').ObjectId;
-import dynamic from "next/dynamic";
+const { connectToDatabase } = require('../../lib/mongodb')
+const ObjectId = require('mongodb').ObjectId
 
-export default async function handler(req, res) {
-    // switch the methods
-    switch (req.method) {
-        case 'GET': {
-            return getStockData(req, res);
-        }
+export default async function handler (req, res) {
+  // switch the methods
+  switch (req.method) {
+    case 'GET': {
+      return getStockData(req, res)
+    }
 
         // case 'POST': {
         //     return addStockData(req, res);
@@ -20,51 +19,51 @@ export default async function handler(req, res) {
         // case 'DELETE': {
         //     return deleteStockData(req, res);
         // }
-    }
+  }
 }
 
-async function getStockData(req,res) {
-    // isolate ticker
-    const ticker_start = req.url.indexOf("?");
-    if (ticker_start==-1) {
-        return res.json({
-            message: "Search Failed, Please report failure and try again later",
-            success: false,
-        });
+async function getStockData (req, res) {
+  // isolate ticker
+  const tickerStart = req.url.indexOf('?')
+  if (tickerStart === -1) {
+    return res.json({
+      message: 'Search Failed, Please report failure and try again later',
+      success: false
+    })
+  }
+  const ticker = req.url.slice(tickerStart + 1)
+  console.log(ticker)
+  try {
+    // connect to the database
+    const { db } = await connectToDatabase()
+    // fetch the posts
+    const dataLen = await db
+      .collection(ticker)
+      .find()
+      .count()
+    if (dataLen === 0) {
+      return res.json({
+        message: 'Ticker not currently supported: ' + ticker + '. Please try again',
+        success: false
+      })
     }
-    const ticker = req.url.slice(ticker_start+1);
-    console.log(ticker);
-    try {
-        // connect to the database
-        let { db } = await connectToDatabase();
-        // fetch the posts
-        let data_len = await db
-            .collection(ticker)
-            .find()
-            .count();
-        if (data_len===0) {
-            return res.json({
-                message: "Ticker not currently supported: " + ticker + ". Please try again",
-                success: false,
-            });
-        }
-        let stock_data = await db
-            .collection(ticker)
-            .find()
-            .toArray();
-        stock_data.sort(function(a,b) {
-                return Date.parse(a.Date)-Date.parse(b.Date);
-            }).reverse();
-        // return the posts
-        return res.json({
-            message: stock_data,
-            success: true,
-        });
-    } catch (error) {
-        // return the error
-        return res.json({
-            message: new Error(error).message,
-            success: false,
-        });
-    }
+    const stockData = await db
+      .collection(ticker)
+      .find()
+      .toArray()
+    stockData.sort(function (a, b) {
+      return Date.parse(a.Date) - Date.parse(b.Date)
+    }).reverse()
+    // return the posts
+    return res.json({
+      message: stockData,
+      success: true
+    })
+  } catch (error) {
+    // return the error
+    return res.json({
+      message: new Error(error).message,
+      success: false
+    })
+  }
 }

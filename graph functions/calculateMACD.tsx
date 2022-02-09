@@ -14,17 +14,17 @@ export function calculateMACD(data: StockData) {
     sma26 = 0;
 
   for (let i = 0; i < 12; i++) {
-    sma12 += Number(data.close.at(i))/12;
-    sma26 += Number(data.close.at(i))/26;
+    sma12 += data.close.at(i) / 12;
+    sma26 += data.close.at(i) / 26;
   }
-  let p_date = data.close.at(11);
+  let p_date = data.Date.at(11);
 
   ema12[p_date] = sma12;
 
   for (let i = 12; i < 26; i++) {
     const c_date = data.Date.at(i);
-    ema12[c_date] = Number(data.close.at(i)) * m12 + ema12[p_date] * (1 - m12);
-    sma26 += Number(data.close.at(i))/26;
+    ema12[c_date] = data.close.at(i) * m12 + ema12[p_date] * (1 - m12);
+    sma26 += data.close.at(i) / 26;
     p_date = c_date;
   }
 
@@ -32,10 +32,10 @@ export function calculateMACD(data: StockData) {
 
   for (let i = 26; i < data.close.length; i++) {
     const c_date = data.Date.at(i);
-    ema12[c_date] = Number(data.close.at(i)) * m12 + ema12[p_date] * (1 - m12);
-    ema26[c_date] = Number(data.close.at(i)) * m26 + ema26[p_date] * (1 - m26);
+    ema12[c_date] = data.close.at(i) * m12 + ema12[p_date] * (1 - m12);
+    ema26[c_date] = data.close.at(i) * m26 + ema26[p_date] * (1 - m26);
     macd.date.push(c_date);
-    macd.macd.push(ema12[c_date]-ema26[c_date]);
+    macd.macd.push(ema12[c_date] - ema26[c_date]);
     p_date = c_date;
   }
   return macd;
