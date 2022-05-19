@@ -39,6 +39,11 @@ const Nav = () => {
             Charts
             </a>
           </div>
+          <div className="navbar-item">
+            <a href="/rawdata">
+            See Raw Data
+            </a>
+          </div>
         </div>
 
         <div className="navbar-end">
@@ -55,6 +60,5 @@ const Nav = () => {
     </nav>
   )
 }
-
 
 export default Nav
