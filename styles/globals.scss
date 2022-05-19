@@ -6,10 +6,12 @@
 $navbar-height:5rem;
 $navbar-item-img-max-height:3rem;
 $dropdown-menu-min-width:20.25rem;
-// $dropdown-content-padding-top:2rem;
+$dropdown-content-padding-top:0rem;
+$navbar-padding-vertical:20rem;
 
 @import "../node_modules/bulma/bulma.sass";
 @import "./bulma-mixins.scss";
+@import "./chart.module.scss";
 
 html,
 body {

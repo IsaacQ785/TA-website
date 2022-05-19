@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Nav from '../components/Nav'
 import Head from 'next/head'
-import unpack from "../helper/unpack"
-import StockSearchBar from "../components/chart components/stockSearch"
-import StockPlot from "../components/chart components/stockPlot"
+import unpack from '../helper/unpack'
+import StockSearchBar from '../components/chart components/stockSearch'
+import StockPlot from '../components/chart components/stockPlot'
+import Adverts from '../components/Adverts'
+// import "../styles/chart.modules.scss"
 
 export interface StockData {
   Date: string[];
@@ -13,12 +15,20 @@ export interface StockData {
   High: number[];
   Low: number[];
 }
-const default_ticker = "AAPL"
+const defaultTicker = 'AAPL'
 
 const ChartPage = (props) => {
+  const [stockData, setStockData] = useState(props.data)
+  const [ticker, setTicker] = useState(defaultTicker)
 
-  const [stockData, setStockData] = useState(props.data);
-  const [ticker, setTicker] = useState(default_ticker);
+  const toggleVis = () => {
+    const x = document.getElementById('testDiv')
+    if (x.style.display === 'none') {
+      x.style.display = 'block'
+    } else {
+      x.style.display = 'none'
+    }
+  }
 
   return (
     <div>
@@ -30,10 +40,37 @@ const ChartPage = (props) => {
         ></meta>
       </Head>
       <main>
-        <div>
-          <Nav />
-          <StockSearchBar tickers ={props.tickers} setStockData={setStockData} setTicker={setTicker} />
-          <StockPlot data={stockData} ticker={ticker}/>
+        <Nav />
+        <div className="container is-fluid">
+          <div className="tile is-ancestor">
+            <div className="tile is-parent is-2"></div>
+
+            <div className="tile is-parent is-2 is-primary">
+              <button
+                className="tile is-child is-primary button"
+                onClick={toggleVis}
+              >
+                Click here to search new Stock...
+              </button>
+            </div>
+            <div id="testDiv" className="tile is-parent is-3">
+              <StockSearchBar
+                tickers={props.tickers}
+                setStockData={setStockData}
+                setTicker={setTicker}
+              />
+            </div>
+            <div className="tile is-5"></div>
+          </div>
+          <div className="tile is-ancestor ">
+            <div className="tile is-11">
+              <StockPlot data={stockData} ticker={ticker} />
+            </div>
+
+            <div className="tile ">
+              <Adverts />
+            </div>
+          </div>
         </div>
       </main>
     </div>
@@ -46,34 +83,29 @@ export async function getServerSideProps (ctx) {
   const { DEV_URL, PROD_URL } = process.env
 
   // request tickers from api
-  const responseTickers = await fetch(`${dev ? DEV_URL : PROD_URL}/api/tickers`)
+  const responseTickers = await fetch(
+    `${dev ? DEV_URL : PROD_URL}/api/tickers`
+  )
   // extract the data
   const tickercurrData = await responseTickers.json()
 
   const responseTickerData = await fetch(
-    `${dev ? DEV_URL : PROD_URL}/api/stock_data` + `?${default_ticker}`,
+    `${dev ? DEV_URL : PROD_URL}/api/stock_data` + `?${defaultTicker}`,
     {
       method: 'GET'
     }
   )
-
+  let tickers = ['AAPL']
   const tickerData = await responseTickerData.json()
-
-  const tickers = unpack(tickercurrData.message, 'Stock-ticker').sort()
-
-  const defaultTickerData = {
-    Date: unpack(tickerData.message, 'Date').reverse(),
-    close: unpack(tickerData.message, 'Close/Last').reverse(),
-    Volume: unpack(tickerData.message, 'Volume').reverse(),
-    Open: unpack(tickerData.message, 'Open').reverse(),
-    High: unpack(tickerData.message, 'High').reverse(),
-    Low: unpack(tickerData.message, 'Low').reverse()
+  console.log(tickercurrData)
+  if (tickercurrData.success) {
+    tickers = unpack(tickercurrData.message, 'Stock-ticker').sort()
   }
 
   return {
     props: {
       tickers: tickers,
-      data: defaultTickerData,
+      data: tickerData.message
     }
   }
 }

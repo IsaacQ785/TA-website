@@ -9,13 +9,18 @@
     "pretest": "eslint --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@blueprintjs/core": "^3.53.0",
+    "@blueprintjs/docs-theme": "^3.10.20",
+    "@blueprintjs/select": "^3.18.12",
     "axios": "^0.24.0",
     "babel-eslint": "^10.1.0",
     "bulma": "^0.9.3",
     "collections": "^5.1.13",
     "eslint-config-strongloop": "^2.1.0",
     "mongodb": "^4.3.0",
+    "mongoose": "^6.2.4",
     "next": "12.0.8",
+    "next-auth": "^4.2.1",
     "next-connect": "^0.11.0",
     "plotly.js": "^2.8.3",
     "react": "^17.0.2",
