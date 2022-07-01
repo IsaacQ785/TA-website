@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
-import styles from '../../styles/Home.module.scss'
+// eslint-disable-next-line no-use-before-define
+import React, { useState, useEffect } from 'react'
 import filterTickers from '../../helper/filterTickers'
+import PropTypes from 'prop-types'
 
-const StockSearchBar = (props) => {
+const StockSearchBar = ({ setTicker, tickers, setStockData }) => {
   // initialise key variables
-  const [ticker, setTicker] = useState('')
+  const [ticker, setCurrentSearchTicker] = useState('')
   const [viewedTicker, setViewedTicker] = useState('AAPL')
-  const [validTickers, setValidTickers] = useState(props.tickers)
+  const [validTickers, setValidTickers] = useState(tickers)
   const [error, setError] = useState('')
   const [message, setMessage] = useState('')
 
@@ -20,14 +21,14 @@ const StockSearchBar = (props) => {
   // handle pressing of dropdown element
   const handleClick = (tick) => {
     return () => {
-      setTicker(tick || ticker)
+      setCurrentSearchTicker(tick || ticker)
     }
   }
 
   // reset ticker and valid tickers post handleRequest
   const handleResetTicker = () => {
-    setTicker('')
-    setValidTickers(filterTickers('', props.tickers))
+    setCurrentSearchTicker('')
+    setValidTickers(filterTickers('', tickers))
   }
 
   // handle onSubmit of request for ticker info
@@ -45,38 +46,43 @@ const StockSearchBar = (props) => {
     })
 
     const trace = await response.json()
-
+    console.log('Contacted database')
     if (trace.success) {
       setViewedTicker(ticker)
-      props.setTicker(ticker)
-      props.setStockData(trace.message)
+      setTicker(ticker)
+      setStockData(trace.message)
       handleResetTicker()
-      return setMessage(`${ticker} now showing, for more tickers, simply submit a new request!`)
+      setMessage(
+        `${ticker} now showing, for more tickers, simply submit a new request!`
+      )
     } else {
       handleResetTicker()
-      return setError(trace.message)
+      setError(trace.message)
     }
   }
 
+  // Log fetching message onChange
+  useEffect(() => {
+    console.log(message, error)
+  }, [message, error])
+
   return (
-    <div className="tile">
-      <div className="tile is-parent is-6">
-        {/* <div className="tile is-child is-success"> */}
-        <article className="panel is-child is-primary">
+    <div id="Stock Search Bar">
+        <nav className="panel">
           <div className="panel-block">
             <p className="control has-icons-left">
               <input
                 className="input is-primary"
                 type="text"
-                placeholder={viewedTicker}
+                placeholder={'Search by Ticker here. E.g. The current viewedTicker is ' + viewedTicker + ') '}
                 onKeyPress={(e) => {
                   pressEnter(e)
                 }}
                 onChange={(e) => {
-                  setTicker(e.target.value)
+                  setCurrentSearchTicker(e.target.value)
                 }}
                 onKeyUp={() => {
-                  setValidTickers(filterTickers(ticker, props.tickers))
+                  setValidTickers(filterTickers(ticker, tickers))
                 }}
                 value={ticker}
               />
@@ -128,20 +134,15 @@ const StockSearchBar = (props) => {
             </a>
               )
             : null}
-        </article>
-        {/* </div> */}
+        </nav>
       </div>
-      <div className="tile is-parent is-6">
-        <article className="tile is-child is-primary box">
-          <div className="content">
-            <div className="content">
-              <p>{error || message}</p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
   )
+}
+
+StockSearchBar.propTypes = {
+  setTicker: PropTypes.func,
+  setStockData: PropTypes.func,
+  tickers: PropTypes.array
 }
 
 export default StockSearchBar

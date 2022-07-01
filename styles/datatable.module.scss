@@ -1,0 +1,12 @@
+.table {
+  
+  &.is-scrollable {
+    tbody {
+      max-height: '500';
+      height: '500';
+      overflow-y: 'scroll';
+      width: 'auto';
+      position: 'absolute';
+    }
+  }
+}

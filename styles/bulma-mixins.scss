@@ -9,3 +9,18 @@
         background: blue;
     }
 }
+
+.table {
+    color:'black';
+    &.is-scrollable {
+      tbody {
+        padding: '10';
+        max-height: '500';
+        height: '500';
+        
+        overflow-y: 'scroll';
+        width: 'auto';
+        position: 'absolute';
+      }
+    }
+  }

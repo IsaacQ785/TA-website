@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-use-before-define
 import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import { processma } from '../../graph functions/movingaverage'
@@ -13,15 +14,18 @@ import { calculateAccDis } from '../../graph functions/accumulationDistributionI
 import { calculateStoOsc } from '../../graph functions/stochasticOscillator'
 import { StockData } from '../../pages/chart'
 import unpack from '../../helper/unpack'
-
+import PropTypes from 'prop-types'
 const PlotlyChart = dynamic(() => import('react-plotlyjs-ts'), { ssr: false })
+let HighCharts = require('highcharts')
 
 const StockPlot = (props) => {
   const [viewedTicker, setViewedTicker] = useState(props.ticker)
   const [clientSide, setClientSide] = useState(false)
-  const [numVisible, setNumVisible] = useState(Infinity)
+  // const [numVisible, setNumVisible] = useState(Infinity)
   const [dataWidth, setDataWidth] = useState(0.01)
-
+  const [plotWidth, setPlotWidth] = useState(1000)
+  const [plotHeight] = useState(1000)
+  // const observer = window.ResizeObserver
   // initialize plotting variables
   const [currData, setData] = useState<StockData>({
     Date: ['01/01/2021'],
@@ -81,7 +85,15 @@ const StockPlot = (props) => {
     d_Date: [],
     d_slow: []
   })
-
+  let resizeCount = 0
+  function onResize (resizeProps) {
+    resizeProps.forEach((resize) => {
+      console.log(resizeCount++)
+      console.log(resize)
+      // setPlotHeight(resize.target.clientHeight)
+      setPlotWidth(resize.target.clientWidth)
+    })
+  }
   // set visiblity hooks
   const [vOHLC, setvOHLC] = useState(true)
   const [v50ma, setv50ma] = useState(false)
@@ -97,8 +109,10 @@ const StockPlot = (props) => {
 
   // onLoad, set initial values in the window
   useEffect(() => {
-    console.log("here")
+    const myObserver = new ResizeObserver(onResize)
+    console.log('here')
     setClientSide(true)
+    myObserver.observe(document.getElementById('plotlychart'))
     const dataTransformed: StockData = {
       Date: unpack(props.data, 'Date').reverse(),
       close: unpack(props.data, 'Close/Last').reverse(),
@@ -118,6 +132,30 @@ const StockPlot = (props) => {
     setRSI(calculateRSI(dataTransformed, 14))
     setaccDis(calculateAccDis(dataTransformed))
     setstoOsc(calculateStoOsc(dataTransformed, 14, 3))
+  }, [])
+
+  useEffect(() => {
+    const dataTransformed: StockData = {
+      Date: unpack(props.data, 'Date').reverse(),
+      close: unpack(props.data, 'Close/Last').reverse(),
+      Volume: unpack(props.data, 'Volume').reverse(),
+      Open: unpack(props.data, 'Open').reverse(),
+      High: unpack(props.data, 'High').reverse(),
+      Low: unpack(props.data, 'Low').reverse()
+    }
+    setViewedTicker(props.ticker)
+    setData(dataTransformed)
+    setma50(processma(dataTransformed, 50))
+    setma200(processma(dataTransformed, 200))
+    setBB(bollingerBands(dataTransformed))
+    setOBV(onBalanceVolume(dataTransformed))
+    setMACD(calculateMACD(dataTransformed))
+    setADX(calculateADX(dataTransformed, 14, 14))
+    setRSI(calculateRSI(dataTransformed, 14))
+    setaccDis(calculateAccDis(dataTransformed))
+    setstoOsc(calculateStoOsc(dataTransformed, 14, 3))
+    console.log("Stock Plot Data Updated")
+    console.log(props.data)
   }, [props.data])
 
   const setRawDataScale = (val) => {
@@ -159,7 +197,7 @@ const StockPlot = (props) => {
 
   return (
     <>
-      <div className="tile is-2">
+      <div className="tile is-2" >
         <div className="tile is-parent is-vertical box">
           <button
             type="button"
@@ -461,8 +499,9 @@ const StockPlot = (props) => {
               barmode: 'stack',
               uirevision: 'true',
               title: viewedTicker,
-              width: clientSide ? 0.7 * window.innerWidth : 800,
-              height: clientSide ? 0.65 * screen.height : 800,
+              autosize: true,
+              width: plotWidth,
+              height: plotHeight,
               dragmode: 'zoom',
               showlegend: true,
               xaxis: {
@@ -487,130 +526,22 @@ const StockPlot = (props) => {
                 fixedrange: false,
                 anchor: 'x'
               },
-              // To be added + more for multiple subplots for MACD, Vol etc.
-              // xaxis3: {
-              //   domain: [0, (dataWidth * 99) / 100],
-              //   rangeslider: {
-              //     visible: true,
-              //   },
-              //   anchor: "y3",
-              // },
-              // yaxis3: {
-              //   domain: [
-              //     0.25 * (1 / numVisible),
-              //     Math.min(0.25, 0.25 * (2 / numVisible)),
-              //   ],
-              //   fixedrange: false,
-              //   anchor: "x2",
-              // },
               modebar: {
                 add: ['drawline', 'eraseshape', 'drawcircle']
-              },
-              shapes: [
-                // // 1st highlight during Feb 4 - Feb 6
-                // {
-                //   type: 'rect',
-                //   // x-reference is assigned to the x-values
-                //   xref: 'x',
-                //   // y-reference is assigned to the plot paper [0,1]
-                //   yref: 'y',
-                //   x0: currData.Date.at(-1), // currData.Date.at(-1), //'01/01/2021',
-                //   y0: currData.High.at(currData.Date.indexOf('01/04/2022')),
-                //   x1: currData.Date.at(0), // "01/01/2024",
-                //   y1: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.318 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
-                //   fillcolor: 'red',
-                //   opacity: 0.35,
-                //   line: {
-                //     width: 3
-                //   },
-                //   editable: true
-                // },
-                // {
-                //   type: 'rect',
-                //   // x-reference is assigned to the x-values
-                //   xref: 'x',
-                //   // y-reference is assigned to the plot paper [0,1]
-                //   yref: 'y',
-                //   x0: currData.Date.at(-1), // currData.Date.at(-1), //'01/01/2021',
-                //   y0: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.318 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
-                //   x1: currData.Date.at(0), // "01/01/2024",
-                //   y1: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.5 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
-                //   fillcolor: 'orange',
-                //   opacity: 0.35,
-                //   line: {
-                //     width: 3
-                //   },
-                //   editable: true
-                // },
-                // {
-                //   type: 'rect',
-                //   // x-reference is assigned to the x-values
-                //   xref: 'x',
-                //   // y-reference is assigned to the plot paper [0,1]
-                //   yref: 'y',
-                //   x0: currData.Date.at(-1), // currData.Date.at(-1), //'01/01/2021',
-                //   y0: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.5 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
-                //   x1: currData.Date.at(0), // "01/01/2024",
-                //   y1: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.76 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
-                //   fillcolor: 'yellow',
-                //   opacity: 0.35,
-                //   line: {
-                //     width: 3
-                //   },
-                //   editable: true
-                // },
-                // {
-                //   type: 'rect',
-                //   // x-reference is assigned to the x-values
-                //   xref: 'x',
-                //   // y-reference is assigned to the plot paper [0,1]
-                //   yref: 'y',
-                //   x0: currData.Date.at(-1), // currData.Date.at(-1), //'01/01/2021',
-                //   y0: currData.High.at(currData.Date.indexOf('01/04/2022')) - 0.76 * (currData.High.at(currData.Date.indexOf('01/04/2022')) - currData.Low.at(currData.Date.indexOf('10/04/2021'))),
-                //   x1: currData.Date.at(0), // "01/01/2024",
-                //   y1: currData.Low.at(currData.Date.indexOf('10/04/2021')),
-                //   fillcolor: 'green',
-                //   opacity: 0.35,
-                //   line: {
-                //     width: 3
-                //   },
-                //   editable: true
-                // }
-                // // {
-                // //   editable: "true",
-                // //   type: "path",
-                // //   line: { color: "yellow", width: 3 },
-                // //   fillcolor:"blue",
-                // //   path: `M ${currData.Date.at(-200)},${currData.High.at(-5)} L ${currData.Date.at(0)},${currData.High.at(-5)}`,
-                // // },
-                // // {
-                // //   editable: "true",
-                // //   type: "path",
-                // //   line: { color: "orange", width: 3 },
-                // //   fillcolor:"blue",
-                // //   path: `M ${currData.Date.at(-200)},${currData.High.at(-3)} L ${currData.Date.at(0)},${currData.High.at(-3)}`,
-                // // },
-                // // {
-                // //   editable: "true",
-                // //   type: "path",
-                // //   line: { color: "red", width: 3 },
-                // //   fillcolor:"blue",
-                // //   path: `M ${currData.Date.at(-200)},${currData.High.at(-2)} L ${currData.Date.at(0)},${currData.High.at(-2)} S red`,
-                // // },
-                // // {
-                // //   editable: "true",
-                // //   type: "path",
-                // //   line: { color: "green", width: 3 },
-                // //   fillcolor:"blue",
-                // //   path: `M ${currData.Date.at(-200)},${currData.High.at(-1)} L ${currData.Date.at(0)},${currData.High.at(-1)} `,
-                // // },
-              ]
+              }
             }}
           />
         </div>
       </div>
     </>
   )
+}
+
+StockPlot.propTypes = {
+  stockData: PropTypes.object,
+  ticker: PropTypes.string,
+  windowSize: PropTypes.array,
+  data: PropTypes.array
 }
 
 export default StockPlot

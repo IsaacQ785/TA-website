@@ -1,8 +1,19 @@
-import NextAuth from 'next-auth'
+import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
+import GoogleProvider from 'next-auth/providers/google'
+import DiscordProvider from 'next-auth/providers/discord'
 
 const options = {
+  site: process.env.NEXTAUTH_URL,
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET
+    }),
+    DiscordProvider({
+      clientId: process.env.DISCORD_CLIENT_ID,
+      clientSecret: process.env.DISCORD_CLIENT_SECRET
+    }),
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
       name: 'Credentials',
@@ -36,7 +47,16 @@ const options = {
         return null
       }
     })
-  ]
+  ],
+  theme: {
+    colorScheme: 'light'
+  },
+  callbacks: {
+    async jwt ({ token }) {
+      token.userRole = 'admin'
+      return token
+    }
+  }
 }
 
 export default (req, res) => NextAuth(req, res, options)

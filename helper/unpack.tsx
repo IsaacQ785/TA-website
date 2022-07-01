@@ -1,5 +1,4 @@
 export default function unpack (rows, key) {
-  console.log(rows, key)
   return rows.map(function (row) {
     if (key === 'Date') {
       return row[key]

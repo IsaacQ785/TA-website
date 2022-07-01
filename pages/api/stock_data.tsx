@@ -51,7 +51,7 @@ async function getStockData (req, res) {
       .collection(ticker)
       .find()
       .toArray()
-    stockData.sort(function (a, b) {
+    stockData.sort(function (a: { Date: string }, b: { Date: string }) {
       return Date.parse(a.Date) - Date.parse(b.Date)
     }).reverse()
     // return the posts

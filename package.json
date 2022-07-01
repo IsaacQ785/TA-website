@@ -8,6 +8,12 @@
     "lint": "next lint",
     "pretest": "eslint --ignore-path .gitignore ."
   },
+  "keywords": [
+    "highcharts",
+    "highstock",
+    "highmaps",
+    "react"
+  ],
   "dependencies": {
     "@blueprintjs/core": "^3.53.0",
     "@blueprintjs/docs-theme": "^3.10.20",
@@ -16,11 +22,16 @@
     "babel-eslint": "^10.1.0",
     "bulma": "^0.9.3",
     "collections": "^5.1.13",
+    "core-js": "^3.23.3",
+    "csv-parser": "^3.0.0",
     "eslint-config-strongloop": "^2.1.0",
+    "highcharts": "9.0.0",
+    "highcharts-react-official": "^3.1.0",
+    "jsonschema": "^1.4.1",
     "mongodb": "^4.3.0",
     "mongoose": "^6.2.4",
     "next": "12.0.8",
-    "next-auth": "^4.2.1",
+    "next-auth": "^4.3.4",
     "next-connect": "^0.11.0",
     "plotly.js": "^2.8.3",
     "react": "^17.0.2",
